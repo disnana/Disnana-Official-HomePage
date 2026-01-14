@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disnana - Discord ボット 公式サイト</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .dark-mode { background-color: #1a202c; color: #fff; }
+        .dark-mode .bg-white { background-color: #2d3748; }
+        .dark-mode .text-gray-900 { color: #fff; }
+        .dark-mode .bg-gray-50 { background-color: #4a5568; }
+        .dark-mode .text-gray-600 { color: #cbd5e0; }
+        .dark-mode .text-indigo-600 { color: #7f9cf5; }
+        .dark-mode .bg-gray-900 { background-color: #1a202c; }
+        .dark-mode .from-indigo-500 { --tw-gradient-from: #434190; }
+        .dark-mode .to-purple-600 { --tw-gradient-to: #553c9a; }
+    </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1399150091834073"
+     crossorigin="anonymous"></script>
+</head>
+<body class="min-h-screen font-sans bg-white text-gray-900">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-indigo-600">Disnana</h1>
+            <button id="darkModeToggle" class="p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-700 text-yellow-300 hover:bg-gray-600">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Disnanaへようこそ</h2>
+            <p class="text-xl md:text-2xl mb-8">個人の力で、大企業以上の価値を創造する</p>
+            <a href="https://discord.gg/KzeHDrgwAz" target="_blank" class="bg-white text-indigo-600 hover:bg-indigo-100 px-6 py-3 rounded-full font-semibold transition-colors">詳細を見る</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold text-center mb-8">最新のプロジェクト</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <i class="fas fa-robot text-4xl text-indigo-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Discordボット</h4>
+                    <p class="text-gray-600">初代「ななはる♪」から「Disnana」へ進化した多機能ボット。荒らし対策、AI不適切発言検知、フィッシングリンクブロック、簡易計算機能など。</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <i class="fas fa-shield-alt text-4xl text-indigo-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Disnana Security Manager</h4>
+                    <p class="text-gray-600">開発中のDiscordサーバー安全維持システム。ユーザー認証を通じて荒らしを軽減。</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <i class="fas fa-lock text-4xl text-indigo-600 mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2">Neon project</h4>
+                    <p class="text-gray-600">高セキュリティのライセンス管理システムとローダーの開発。解析困難な安全なライセンス制製品の提供を目指す。</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="text-3xl font-bold text-center mb-8">メンバー</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://cdn.discordapp.com/avatars/1152514062194851840/961c0c9f913def4f416453f0dfe8e3e0.webp" alt="ふまれうか" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h4 class="text-xl font-semibold mb-2">ふまれうか</h4>
+                    <p class="text-gray-600">副リーダー</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://cdn.discordapp.com/avatars/990126759292858378/61408e445b06c30376ea7d214c3f99d9.webp" alt="ななはる" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h4 class="text-xl font-semibold mb-2">ななはる</h4>
+                    <p class="text-gray-600">リーダー</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://cdn.discordapp.com/avatars/1163416356566347828/627e7d8739729b8db9f1dfbf4d99f1d3.webp" alt="tp-li" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h4 class="text-xl font-semibold mb-2">tp-li</h4>
+                    <p class="text-gray-600">デベロッパー</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Disnana. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="https://x.com/disnana_service" class="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noreferrer noopener">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://discord.gg/KzeHDrgwAz" class="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noreferrer noopener">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://github.com/disnana" class="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noreferrer noopener">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// Cookieに値をセットする関数
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+// Cookieの値を取得する関数
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// ダークモードの状態をチェックして適用する
+function applyDarkMode() {
+    const body = document.body;
+    const darkModeEnabled = getCookie('darkMode') === 'enabled';
+    const moonIcon = darkModeToggle.querySelector('i');
+
+    if (darkModeEnabled) {
+        body.classList.add('dark-mode');
+        moonIcon.classList.remove('fa-moon');
+        moonIcon.classList.add('fa-sun');
+        darkModeToggle.classList.remove('bg-gray-700', 'text-yellow-300');
+        darkModeToggle.classList.add('bg-yellow-400', 'text-gray-900');
+    } else {
+        body.classList.remove('dark-mode');
+        moonIcon.classList.remove('fa-sun');
+        moonIcon.classList.add('fa-moon');
+        darkModeToggle.classList.remove('bg-yellow-400', 'text-gray-900');
+        darkModeToggle.classList.add('bg-gray-700', 'text-yellow-300');
+    }
+}
+
+// ダークモードのトグルイベントリスナーを設定
+const darkModeToggle = document.getElementById('darkModeToggle');
+
+darkModeToggle.addEventListener('click', () => {
+    const body = document.body;
+    const moonIcon = darkModeToggle.querySelector('i');
+
+    // ダークモードをトグルする
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+        moonIcon.classList.remove('fa-moon');
+        moonIcon.classList.add('fa-sun');
+        darkModeToggle.classList.remove('bg-gray-700', 'text-yellow-300');
+        darkModeToggle.classList.add('bg-yellow-400', 'text-gray-900');
+
+        // Cookieにダークモードが有効であることを保存
+        setCookie('darkMode', 'enabled', 7);
+    } else {
+        moonIcon.classList.remove('fa-sun');
+        moonIcon.classList.add('fa-moon');
+        darkModeToggle.classList.remove('bg-yellow-400', 'text-gray-900');
+        darkModeToggle.classList.add('bg-gray-700', 'text-yellow-300');
+
+        // Cookieにダークモードが無効であることを保存
+        setCookie('darkMode', 'disabled', 7);
+    }
+});
+
+// ページが読み込まれたときにCookieからダークモードの状態を適用
+window.onload = applyDarkMode;
+
+    </script>
+</body>
+</html>
