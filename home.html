@@ -1,181 +1,386 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disnana - Discord ボット 公式サイト</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="logo_mini.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS v3 (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+                    },
+                    colors: {
+                        // Deep Void Palette
+                        background: '#050510',
+                        surface: '#0a0a1f',
+                        'surface-light': '#12122a',
+
+                        // Neon Accents
+                        primary: {
+                            DEFAULT: '#7c3aed', // Violet 600
+                            glow: '#8b5cf6',    // Violet 500
+                            dark: '#5b21b6',    // Violet 800
+                        },
+                        cyan: {
+                            DEFAULT: '#06b6d4', // Cyan 500
+                            glow: '#22d3ee',    // Cyan 400
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #2a2a5a -10%, #050510 50%, #2a2a5a 110%)',
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        .dark-mode { background-color: #1a202c; color: #fff; }
-        .dark-mode .bg-white { background-color: #2d3748; }
-        .dark-mode .text-gray-900 { color: #fff; }
-        .dark-mode .bg-gray-50 { background-color: #4a5568; }
-        .dark-mode .text-gray-600 { color: #cbd5e0; }
-        .dark-mode .text-indigo-600 { color: #7f9cf5; }
-        .dark-mode .bg-gray-900 { background-color: #1a202c; }
-        .dark-mode .from-indigo-500 { --tw-gradient-from: #434190; }
-        .dark-mode .to-purple-600 { --tw-gradient-to: #553c9a; }
+        body {
+            background-color: #050510;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050510;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333366;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(10, 10, 31, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(20, 20, 45, 0.6), rgba(10, 10, 30, 0.4));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Neon Text Glow */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+
+        .text-glow-cyan {
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #a78bfa, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1399150091834073"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1399150091834073"
+        crossorigin="anonymous"></script>
 </head>
-<body class="min-h-screen font-sans bg-white text-gray-900">
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-indigo-600">Disnana</h1>
-            <button id="darkModeToggle" class="p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-700 text-yellow-300 hover:bg-gray-600">
-                <i class="fas fa-moon"></i>
-            </button>
+
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <!-- Background Effects -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob">
+        </div>
+        <div
+            class="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-cyan/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-purple-900/20 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-white/5">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="group flex items-center gap-3">
+                <div
+                    class="relative w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 group-hover:border-primary/50 transition-colors">
+                    <i class="fas fa-robot text-primary group-hover:text-cyan-400 transition-colors"></i>
+                </div>
+                <span
+                    class="text-xl font-bold tracking-wide text-white group-hover:text-glow transition-all">Disnana</span>
+            </a>
+
+            <a href="https://discord.gg/KzeHDrgwAz" target="_blank"
+                class="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 transition-all group">
+                <i class="fab fa-discord text-gray-400 group-hover:text-[#5865F2] transition-colors"></i>
+                <span class="text-sm font-medium text-gray-300 group-hover:text-white">Discordに参加</span>
+            </a>
         </div>
     </nav>
 
-    <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Disnanaへようこそ</h2>
-            <p class="text-xl md:text-2xl mb-8">個人の力で、大企業以上の価値を創造する</p>
-            <a href="https://discord.gg/KzeHDrgwAz" target="_blank" class="bg-white text-indigo-600 hover:bg-indigo-100 px-6 py-3 rounded-full font-semibold transition-colors">詳細を見る</a>
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden z-10">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary-glow text-xs font-semibold uppercase tracking-wider mb-8 animate-float">
+                <span class="w-2 h-2 rounded-full bg-primary-glow animate-pulse"></span>
+                Next Generation Bot
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tight">
+                Deep Control.<br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 text-glow">
+                    Unbreakable Security.
+                </span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                個人の力で、大企業以上の価値を創造する。<br>
+                最新のAI技術と強固なインフラが、あなたのコミュニティを24時間守り抜きます。
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://discord.gg/KzeHDrgwAz" target="_blank"
+                    class="px-8 py-4 rounded-full bg-primary hover:bg-primary-dark text-white font-bold shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:shadow-[0_0_30px_rgba(124,58,237,0.7)] transition-all transform hover:scale-105 flex items-center gap-2">
+                    <i class="fab fa-discord"></i>
+                    今すぐ導入する
+                </a>
+                <a href="#features"
+                    class="px-8 py-4 rounded-full bg-surface hover:bg-surface-light border border-white/10 text-gray-300 font-bold hover:text-white transition-all">
+                    機能を見る
+                </a>
+            </div>
+        </div>
+
+        <!-- Decorative Grid -->
+        <div
+            class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay">
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-12">
-        <section class="mb-16">
-            <h3 class="text-3xl font-bold text-center mb-8">最新のプロジェクト</h3>
+    <main class="container mx-auto px-6 py-12 relative z-10">
+
+        <!-- Features Section -->
+        <section id="features" class="mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-16 relative">
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">Projects &
+                    Features</span>
+                <div
+                    class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-transparent via-primary to-transparent">
+                </div>
+            </h3>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                    <i class="fas fa-robot text-4xl text-indigo-600 mb-4"></i>
-                    <h4 class="text-xl font-semibold mb-2">Discordボット</h4>
-                    <p class="text-gray-600">初代「ななはる♪」から「Disnana」へ進化した多機能ボット。荒らし対策、AI不適切発言検知、フィッシングリンクブロック、簡易計算機能など。</p>
+                <!-- Feature 1 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-primary/20">
+                        <i class="fas fa-robot text-2xl text-primary-glow"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white group-hover:text-primary-glow transition-colors">
+                        Discord Bot</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        初代「ななはる♪」から進化した多機能AIボット。AIによる不適切発言検知、強力な荒らし対策、フィッシングリンクの自動ブロックまで完備。
+                    </p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                    <i class="fas fa-shield-alt text-4xl text-indigo-600 mb-4"></i>
-                    <h4 class="text-xl font-semibold mb-2">Disnana Security Manager</h4>
-                    <p class="text-gray-600">開発中のDiscordサーバー安全維持システム。ユーザー認証を通じて荒らしを軽減。</p>
+
+                <!-- Feature 2 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-cyan/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan/20">
+                        <i class="fas fa-shield-alt text-2xl text-cyan-glow"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white group-hover:text-cyan-glow transition-colors">Security
+                        Manager</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        開発中の次世代Discordサーバー防衛システム。高度なユーザー認証と行動分析を通じて、脅威を未然に排除します。
+                    </p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                    <i class="fas fa-lock text-4xl text-indigo-600 mb-4"></i>
-                    <h4 class="text-xl font-semibold mb-2">Neon project</h4>
-                    <p class="text-gray-600">高セキュリティのライセンス管理システムとローダーの開発。解析困難な安全なライセンス制製品の提供を目指す。</p>
+
+                <!-- Feature 3 -->
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-pink-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-pink-500/20">
+                        <i class="fas fa-microchip text-2xl text-pink-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white group-hover:text-pink-400 transition-colors">Neon
+                        Project</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        解析困難なライセンス認証システムとセキュアローダーの開発。ソフトウェアの知的財産を最高レベルで保護します。
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h3 class="text-3xl font-bold text-center mb-8">メンバー</h3>
+        <!-- Members Section -->
+        <section class="mb-20">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-16 relative">
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">Core Members</span>
+                <div
+                    class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent">
+                </div>
+            </h3>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
-                    <img src="https://cdn.discordapp.com/avatars/1152514062194851840/961c0c9f913def4f416453f0dfe8e3e0.webp" alt="ふまれうか" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h4 class="text-xl font-semibold mb-2">ふまれうか</h4>
-                    <p class="text-gray-600">副リーダー</p>
+                <!-- Member 1 -->
+                <div class="glass-card p-8 rounded-2xl text-center group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative w-32 h-32 mx-auto mb-6">
+                        <div
+                            class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary to-cyan-400 animate-spin-slow opacity-0 group-hover:opacity-70 blur-md transition-opacity">
+                        </div>
+                        <img src="https://cdn.discordapp.com/avatars/1152514062194851840/961c0c9f913def4f416453f0dfe8e3e0.webp"
+                            alt="ふまれうか"
+                            class="w-full h-full rounded-full border-2 border-surface relative z-10 object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold mb-1 text-white">ふまれうか</h4>
+                    <p class="text-primary-glow text-sm font-medium tracking-wider uppercase mb-2">Vice Leader</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
-                    <img src="https://cdn.discordapp.com/avatars/990126759292858378/b7f4fbade0a59cbfc7cf65f112064e92.webp?size=128" alt="ななはる" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h4 class="text-xl font-semibold mb-2">ななはる</h4>
-                    <p class="text-gray-600">リーダー</p>
+
+                <!-- Member 2 -->
+                <div
+                    class="glass-card p-8 rounded-2xl text-center group relative overflow-hidden transform md:-translate-y-4">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative w-32 h-32 mx-auto mb-6">
+                        <div
+                            class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary to-purple-500 opacity-20 group-hover:opacity-80 blur-lg transition-opacity duration-500">
+                        </div>
+                        <img src="https://cdn.discordapp.com/avatars/990126759292858378/b7f4fbade0a59cbfc7cf65f112064e92.webp?size=128"
+                            alt="ななはる"
+                            class="w-full h-full rounded-full border-4 border-surface relative z-10 object-cover">
+                    </div>
+                    <h4 class="text-2xl font-bold mb-1 text-white">ななはる</h4>
+                    <p class="text-primary-glow text-sm font-bold tracking-wider uppercase mb-2">Leader / Founder</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
-                    <img src="https://cdn.discordapp.com/avatars/1163416356566347828/c4c20f87cf5a87411e1c23c86a4fc664.webp?size=128" alt="tp-li" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h4 class="text-xl font-semibold mb-2">tp-li</h4>
-                    <p class="text-gray-600">デベロッパー</p>
+
+                <!-- Member 3 -->
+                <div class="glass-card p-8 rounded-2xl text-center group relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative w-32 h-32 mx-auto mb-6">
+                        <div
+                            class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-70 blur-md transition-opacity">
+                        </div>
+                        <img src="https://cdn.discordapp.com/avatars/1163416356566347828/c4c20f87cf5a87411e1c23c86a4fc664.webp?size=128"
+                            alt="tp-li"
+                            class="w-full h-full rounded-full border-2 border-surface relative z-10 object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold mb-1 text-white">tp-li</h4>
+                    <p class="text-cyan-glow text-sm font-medium tracking-wider uppercase mb-2">Developer</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2023 Disnana. All rights reserved.</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="https://x.com/disnana_service" class="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noreferrer noopener">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://discord.gg/KzeHDrgwAz" class="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noreferrer noopener">
-                    <i class="fab fa-discord"></i>
-                </a>
-                <a href="https://github.com/disnana" class="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noreferrer noopener">
-                    <i class="fab fa-github"></i>
-                </a>
+    <!-- Footer -->
+    <footer class="glass border-t border-white/5 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <h5 class="text-2xl font-bold text-white mb-2">Disnana</h5>
+                    <p class="text-gray-500 text-sm">&copy; 2023 Disnana. All rights reserved.</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="https://x.com/disnana_service" target="_blank"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:scale-110 transition-all">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://discord.gg/KzeHDrgwAz" target="_blank"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-[#5865F2] hover:bg-white/10 hover:scale-110 transition-all">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://github.com/disnana" target="_blank"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:scale-110 transition-all">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Animations Script -->
     <script>
-// Cookieに値をセットする関数
-function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
+        // Simple Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, { threshold: 0.1 });
 
-// Cookieの値を取得する関数
-function getCookie(name) {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-// ダークモードの状態をチェックして適用する
-function applyDarkMode() {
-    const body = document.body;
-    const darkModeEnabled = getCookie('darkMode') === 'enabled';
-    const moonIcon = darkModeToggle.querySelector('i');
-
-    if (darkModeEnabled) {
-        body.classList.add('dark-mode');
-        moonIcon.classList.remove('fa-moon');
-        moonIcon.classList.add('fa-sun');
-        darkModeToggle.classList.remove('bg-gray-700', 'text-yellow-300');
-        darkModeToggle.classList.add('bg-yellow-400', 'text-gray-900');
-    } else {
-        body.classList.remove('dark-mode');
-        moonIcon.classList.remove('fa-sun');
-        moonIcon.classList.add('fa-moon');
-        darkModeToggle.classList.remove('bg-yellow-400', 'text-gray-900');
-        darkModeToggle.classList.add('bg-gray-700', 'text-yellow-300');
-    }
-}
-
-// ダークモードのトグルイベントリスナーを設定
-const darkModeToggle = document.getElementById('darkModeToggle');
-
-darkModeToggle.addEventListener('click', () => {
-    const body = document.body;
-    const moonIcon = darkModeToggle.querySelector('i');
-
-    // ダークモードをトグルする
-    body.classList.toggle('dark-mode');
-
-    if (body.classList.contains('dark-mode')) {
-        moonIcon.classList.remove('fa-moon');
-        moonIcon.classList.add('fa-sun');
-        darkModeToggle.classList.remove('bg-gray-700', 'text-yellow-300');
-        darkModeToggle.classList.add('bg-yellow-400', 'text-gray-900');
-
-        // Cookieにダークモードが有効であることを保存
-        setCookie('darkMode', 'enabled', 7);
-    } else {
-        moonIcon.classList.remove('fa-sun');
-        moonIcon.classList.add('fa-moon');
-        darkModeToggle.classList.remove('bg-yellow-400', 'text-gray-900');
-        darkModeToggle.classList.add('bg-gray-700', 'text-yellow-300');
-
-        // Cookieにダークモードが無効であることを保存
-        setCookie('darkMode', 'disabled', 7);
-    }
-});
-
-// ページが読み込まれたときにCookieからダークモードの状態を適用
-window.onload = applyDarkMode;
-
+            // Apply to cards and sections
+            document.querySelectorAll('.glass-card, h3').forEach(el => {
+                el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700', 'ease-out');
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
+
 </html>
