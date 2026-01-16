@@ -17,7 +17,6 @@ def fix_next_paths():
         print(f"Directory {old_dir} not found. (Maybe already renamed?)")
 
     # 2. Update references in HTML, TXT, JS, JSON, and CSS files
-    # We use a case-sensitive replacement for /_next/
     pattern = re.compile(r'/_next/')
     replacement = '/next_assets/'
 
@@ -35,7 +34,6 @@ def fix_next_paths():
             if file.lower().endswith(target_extensions):
                 file_path = os.path.join(root, file)
                 
-                # We need to handle possible encoding issues in binary-ish JS/CSS
                 try:
                     with open(file_path, 'r', encoding='utf-8') as f:
                         content = f.read()
@@ -46,8 +44,6 @@ def fix_next_paths():
                             f.write(new_content)
                         print(f"Updated references in: {file_path}")
                 except Exception as e:
-                    # If utf-8 fails, it might be a binary file or different encoding
-                    # For safety in this environment, we just log and skip or try latin-1
                     try:
                         with open(file_path, 'r', encoding='latin-1') as f:
                             content = f.read()
@@ -59,6 +55,41 @@ def fix_next_paths():
                     except Exception as e2:
                         print(f"Could not process {file_path}: {e2}")
 
+    # 3. Fix React loading screen overlay issue
+    # The static export has a React loading overlay that doesn't get removed
+    # because hydration never completes. We need to add a script to remove it.
+    print("\nFixing stuck React loading overlay...")
+    
+    # Script to inject - removes the React loading overlay after timeout
+    fix_script = '''<script>
+// Fix: Remove stuck React loading overlay after 3 seconds
+setTimeout(function() {
+  var overlay = document.querySelector('.fixed.inset-0.z-\\\\[100\\\\]');
+  if (overlay) overlay.style.display = 'none';
+  var preloader = document.getElementById('preloader');
+  if (preloader) preloader.classList.add('fade-out');
+}, 3000);
+</script>'''
+    
+    # Find and update HTML files
+    for file in os.listdir(root_dir):
+        if file.endswith('.html'):
+            file_path = os.path.join(root_dir, file)
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # Check if our fix script is already present
+                if 'Fix: Remove stuck React loading overlay' not in content:
+                    # Insert our script before </head>
+                    if '</head>' in content:
+                        new_content = content.replace('</head>', fix_script + '</head>')
+                        with open(file_path, 'w', encoding='utf-8') as f:
+                            f.write(new_content)
+                        print(f"Injected overlay fix into: {file_path}")
+            except Exception as e:
+                print(f"Could not process {file_path}: {e}")
+
 if __name__ == "__main__":
     fix_next_paths()
-    print("Optimization Complete.")
+    print("\nOptimization Complete.")
