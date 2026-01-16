@@ -1,300 +1,409 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Disnana</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome CDN -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tp-li - Full Stack Developer</title>
+  <link rel="icon" href="logo_mini.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- ShadCN/UI CDN (必要に応じて追加) -->
+
+  <!-- Tailwind CSS v3 (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+          },
+          colors: {
+            // Deep Void Palette
+            background: '#050510',
+            surface: '#0a0a1f',
+            'surface-light': '#12122a',
+
+            // Neon Accents
+            primary: {
+              DEFAULT: '#7c3aed', // Violet 600
+              glow: '#8b5cf6',    // Violet 500
+              dark: '#5b21b6',    // Violet 800
+            },
+            cyan: {
+              DEFAULT: '#06b6d4', // Cyan 500
+              glow: '#22d3ee',    // Cyan 400
+            }
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #2a2a5a -10%, #050510 50%, #2a2a5a 110%)',
+          },
+          animation: {
+            'blob': 'blob 7s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #050510;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #050510;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333366;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #7c3aed;
+    }
+
+    /* Glassmorphism Utilities */
+    .glass {
+      background: rgba(10, 10, 31, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-card {
+      background: linear-gradient(145deg, rgba(20, 20, 45, 0.6), rgba(10, 10, 30, 0.4));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(124, 58, 237, 0.3);
+      box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.3);
+    }
+
+    /* Neon Text Glow */
+    .text-glow {
+      text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    }
+
+    .text-glow-cyan {
+      text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+    }
+  </style>
 </head>
-<body class="bg-[#0A0A0A] font-inter text-white antialiased font-medium">
-  <!-- ナビゲーションバー -->
-  <nav class="fixed w-full bg-black/50 backdrop-blur-lg border-b border-white/5 z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-8">
-        <a href="#" id="nav-top" class="text-2xl font-bold transition-transform tracking-tight">
-          <span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Disnana</span>
-        </a>
-        <div class="hidden md:flex space-x-6">
-          <a href="#skills" class="nav-link text-white/70 hover:text-white transition-colors tracking-wide">技術スタック</a>
-          <a href="#services" class="nav-link text-white/70 hover:text-white transition-colors tracking-wide">プロジェクト</a>
-          <a href="#learning" class="nav-link text-white/70 hover:text-white transition-colors tracking-wide">学習中の技術</a>
+
+<body class="antialiased selection:bg-primary selection:text-white">
+
+  <!-- Background Effects -->
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <div
+      class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob">
+    </div>
+    <div
+      class="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-cyan/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000">
+    </div>
+    <div
+      class="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-purple-900/20 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-blob animation-delay-4000">
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 glass border-b border-white/5">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="home.html" class="group flex items-center gap-3">
+        <div
+          class="relative w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 group-hover:border-primary/50 transition-colors">
+          <i class="fas fa-home text-primary group-hover:text-cyan-400 transition-colors"></i>
         </div>
-      </div>
-      <div class="flex items-center space-x-4">
-        <a href="https://github.com/disnana" class="text-white/70 hover:text-white transition-colors transform-gpu" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github text-xl"></i>
-        </a>
-        <a href="https://x.com/Disnana_Service" class="text-white/70 hover:text-white transition-colors transform-gpu" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-twitter text-xl"></i>
-        </a>
+        <span class="text-xl font-bold tracking-wide text-white group-hover:text-glow transition-all">Disnana
+          Home</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#skills" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Skills</a>
+        <a href="#projects" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Projects</a>
+        <a href="#learning" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Learning</a>
       </div>
     </div>
   </nav>
 
-  <!-- トップセクション -->
-  <section class="pt-32 pb-20 px-4 relative overflow-hidden" id="top">
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-600/5 blur-3xl"></div>
-    <div class="container mx-auto relative">
-      <div class="max-w-4xl mx-auto text-center">
-        <span class="text-base font-semibold bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-1 rounded-full inline-block transition-transform shadow-lg shadow-purple-500/25 tracking-wide text-white">フルスタック開発者</span>
-        <h1 class="text-5xl md:text-7xl font-extrabold mt-6 mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent tracking-tight leading-tight">創造性と技術力で<br>未来を創る</h1>
-        <p class="text-xl text-white mb-8 tracking-wide leading-relaxed font-medium">Pythonをコアに、フロントエンドからバックエンドまで。新しい技術への挑戦を続け、より良いサービスを提供します。</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <a href="mailto:support@disnana.com" class="text-base font-semibold bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-3 rounded-lg hover:opacity-90 transition-all shadow-lg shadow-purple-500/25 animate-pulse tracking-wide text-white">お問い合わせ</a>
-          <a href="#services" class="scroll-link text-base font-semibold bg-white/5 border border-white/10 px-8 py-3 rounded-lg hover:bg-white/10 transition-all tracking-wide text-white">提供サービス</a>
-        </div>
+  <!-- Hero Section -->
+  <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden z-10">
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan-glow text-xs font-semibold uppercase tracking-wider mb-8 animate-float">
+        <span class="w-2 h-2 rounded-full bg-cyan-glow animate-pulse"></span>
+        Full Stack Developer
       </div>
-      <!-- 技術スタックのカードなど -->
-    </div>
-  </section>
 
-  <!-- 技術スタックセクション -->
-  <section class="py-20 px-4 relative overflow-hidden" id="skills">
-    <div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-600/5 blur-3xl"></div>
-    <div class="container mx-auto relative">
-      <div class="max-w-4xl mx-auto text-center mb-16">
-        <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-6">技術スタック</h2>
-        <p class="text-xl text-white">データベース設計から API 開発まで、幅広い技術スタックを活用してソリューションを提供します。</p>
+      <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tight">
+        tp-li<br>
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-glow-cyan">
+          Building the Future.
+        </span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+        Pythonをコアに、フロントエンドからバックエンドまで。<br>
+        創造性と技術力で、新しい価値を提供します。
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="mailto:tp-li@disnana.com"
+          class="px-8 py-4 rounded-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:shadow-[0_0_30px_rgba(6,182,212,0.7)] transition-all transform hover:scale-105 flex items-center gap-2">
+          <i class="fas fa-envelope"></i>
+          Contact Me
+        </a>
+        <a href="#projects"
+          class="px-8 py-4 rounded-full bg-surface hover:bg-surface-light border border-white/10 text-gray-300 font-bold hover:text-white transition-all">
+          View Works
+        </a>
       </div>
+    </div>
+
+    <!-- Decorative Grid -->
+    <div
+      class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay">
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-12 relative z-10">
+
+    <!-- Skills Section -->
+    <section id="skills" class="mb-32">
+      <h3 class="text-3xl md:text-4xl font-bold text-center mb-16 relative">
+        <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">Technical Stack</span>
+        <div
+          class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent">
+        </div>
+      </h3>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-gradient-to-br from-blue-500/10 to-purple-600/10 p-8 rounded-xl backdrop-blur-lg border border-white/10 hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-purple-600/20 transition-all duration-300">
-          <h3 class="text-2xl font-bold mb-4 text-white">データベース</h3>
+        <!-- Database -->
+        <div class="glass-card p-8 rounded-2xl group">
+          <h4
+            class="text-2xl font-bold mb-6 text-white group-hover:text-cyan-glow transition-colors flex items-center gap-3">
+            <i class="fas fa-database text-cyan-500"></i> Database
+          </h4>
           <div class="space-y-4">
-            <div class="flex items-center hover:bg-white/5 p-2 rounded-lg transition-colors duration-300">
-              <div class="w-8"><i class="fas fa-database text-2xl text-blue-500"></i></div>
-              <span class="text-white ml-4">PostgreSQL</span>
+            <div class="flex items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+              <i class="fas fa-server text-blue-400 w-8 text-center text-xl"></i>
+              <span class="text-gray-300 ml-4 font-medium">PostgreSQL</span>
             </div>
-            <div class="flex items-center hover:bg-white/5 p-2 rounded-lg transition-colors duration-300">
-              <div class="w-8"><i class="fas fa-database text-2xl text-yellow-500"></i></div>
-              <span class="text-white ml-4">SQLite</span>
+            <div class="flex items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+              <i class="fas fa-file-code text-yellow-400 w-8 text-center text-xl"></i>
+              <span class="text-gray-300 ml-4 font-medium">SQLite</span>
             </div>
-            <div class="flex items-center hover:bg-white/5 p-2 rounded-lg transition-colors duration-300">
-              <div class="w-8"><i class="fas fa-code-branch text-2xl text-purple-500"></i></div>
-              <span class="text-white ml-4">独自開発 DB</span>
+            <div class="flex items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+              <i class="fas fa-code-branch text-purple-400 w-8 text-center text-xl"></i>
+              <span class="text-gray-300 ml-4 font-medium">Custom DB Development</span>
             </div>
           </div>
         </div>
-        <div class="bg-gradient-to-br from-blue-500/10 to-purple-600/10 p-8 rounded-xl backdrop-blur-lg border border-white/10 hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-purple-600/20 transition-all duration-300">
-          <h3 class="text-2xl font-bold mb-4 text-white">開発スキル</h3>
+
+        <!-- Development -->
+        <div class="glass-card p-8 rounded-2xl group">
+          <h4
+            class="text-2xl font-bold mb-6 text-white group-hover:text-primary-glow transition-colors flex items-center gap-3">
+            <i class="fas fa-code text-primary"></i> Development
+          </h4>
           <div class="space-y-4">
-            <div class="flex items-center hover:bg-white/5 p-2 rounded-lg transition-colors duration-300">
-              <div class="w-8"><i class="fas fa-server text-2xl text-green-500"></i></div>
-              <span class="text-white ml-4">API 開発</span>
+            <div class="flex items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+              <i class="fas fa-network-wired text-green-400 w-8 text-center text-xl"></i>
+              <span class="text-gray-300 ml-4 font-medium">API Development</span>
             </div>
-            <div class="flex items-center hover:bg-white/5 p-2 rounded-lg transition-colors duration-300">
-              <div class="w-8"><i class="fas fa-laptop-code text-2xl text-blue-500"></i></div>
-              <span class="text-white ml-4">ソフト開発</span>
+            <div class="flex items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+              <i class="fas fa-laptop-code text-blue-500 w-8 text-center text-xl"></i>
+              <span class="text-gray-300 ml-4 font-medium">Software Development</span>
             </div>
-            <div class="flex items-center hover:bg-white/5 p-2 rounded-lg transition-colors duration-300">
-              <div class="w-8"><i class="fas fa-globe text-2xl text-purple-500"></i></div>
-              <span class="text-white ml-4">ウェブアプリ開発</span>
+            <div class="flex items-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+              <i class="fas fa-globe text-pink-400 w-8 text-center text-xl"></i>
+              <span class="text-gray-300 ml-4 font-medium">Web App Development</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- プロジェクトセクション -->
-  <section class="py-20 px-4 relative overflow-hidden" id="services">
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-600/5 blur-3xl"></div>
-    <div class="container mx-auto relative">
-      <div class="max-w-4xl mx-auto text-center mb-16">
-        <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-6">プロジェクト</h2>
-        <p class="text-xl text-white/70">以下はこれまで開発したものの一部になります</p>
-      </div>
+    <!-- Projects Section -->
+    <section id="projects" class="mb-32">
+      <h3 class="text-3xl md:text-4xl font-bold text-center mb-16 relative">
+        <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">Key Projects</span>
+        <div
+          class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-transparent via-primary to-transparent">
+        </div>
+      </h3>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-purple-600/20 bg-gradient-to-br from-blue-500/10 to-purple-600/10 p-8 rounded-xl backdrop-blur-lg border border-white/10 group transition-all duration-300 relative will-change-transform">
-          <div class="flex items-center gap-4 mb-6 group-hover:scale-100 transition-transform">
-            <i class="fab fa-discord text-4xl text-[#5865F2] transition-transform"></i>
-            <h3 class="text-2xl font-bold text-white/90 transition-transform">Discord Bot</h3>
+        <!-- Discord Bot -->
+        <div class="glass-card p-8 rounded-2xl group relative overflow-hidden">
+          <div class="flex items-center gap-4 mb-4">
+            <div
+              class="w-12 h-12 rounded-lg bg-[#5865F2]/20 flex items-center justify-center border border-[#5865F2]/30">
+              <i class="fab fa-discord text-2xl text-[#5865F2]"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-white">Discord Bot</h4>
           </div>
-          <p class="text-base text-white/90 tracking-wide font-medium mb-6 transition-transform">高度なAI技術と包括的な保護機能を備えた次世代Discordボット。サーバーの管理を安全かつ簡単に実現します。</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-base font-medium">AI モデレーション</span>
-            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-base font-medium">荒らし対策</span>
-            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-base font-medium">多機能</span>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            高度なAI技術と包括的な保護機能を備えた次世代Discordボット。サーバー管理を安全かつ簡単に実現します。
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span
+              class="px-3 py-1 rounded-full text-xs font-medium bg-[#5865F2]/10 text-[#5865F2] border border-[#5865F2]/20">AI
+              Moderation</span>
+            <span
+              class="px-3 py-1 rounded-full text-xs font-medium bg-[#5865F2]/10 text-[#5865F2] border border-[#5865F2]/20">Anti-Raid</span>
           </div>
-          <button onclick="window.open('https://disnana.com/home', '_blank')" class="absolute bottom-4 right-4 bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-lg hover:opacity-90 transition-all">
-            <i class="fas fa-external-link-alt"></i>
-          </button>
+          <a href="https://home.disnana.com" target="_blank"
+            class="inline-flex items-center gap-2 text-sm text-primary-glow hover:text-white transition-colors">
+            View Project <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-        <div class="hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-purple-600/20 bg-gradient-to-br from-blue-500/10 to-purple-600/10 p-8 rounded-xl backdrop-blur-lg border border-white/10 group transition-all duration-300 relative will-change-transform">
-          <div class="flex items-center gap-4 mb-6 group-hover:scale-100 transition-transform">
-            <i class="fas fa-shield-alt text-4xl text-green-400 transition-transform"></i>
-            <h3 class="text-2xl font-bold text-white/90 transition-transform">ライセンスローダー</h3>
-          </div>
-          <p class="text-base text-white/90 tracking-wide font-medium mb-6 transition-transform">改竄・解析対策を備えた高セキュリティなライセンス認証システム。ソフトウェアの不正利用を防ぎ、正規ユーザーを保護します。</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-base font-medium">改竄対策</span>
-            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-base font-medium">解析防止</span>
-            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-base font-medium">暗号化</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- 学習中の技術セクション -->
-  <section class="py-20 px-4 relative overflow-hidden" id="learning">
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-600/5 blur-3xl"></div>
-    <div class="container mx-auto relative">
-      <div class="max-w-4xl mx-auto text-center mb-16">
-        <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-6">学習中の技術</h2>
-        <p class="text-xl text-white/70">新しい技術に常にチャレンジし、スキルの幅を広げています</p>
+        <!-- License Loader -->
+        <div class="glass-card p-8 rounded-2xl group relative overflow-hidden">
+          <div class="flex items-center gap-4 mb-4">
+            <div
+              class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center border border-green-500/30">
+              <i class="fas fa-shield-alt text-2xl text-green-400"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-white">License Loader</h4>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            改竄・解析対策を備えた高セキュリティなライセンス認証システム。ソフトウェアの不正利用を防ぎます。
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span
+              class="px-3 py-1 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">Security</span>
+            <span
+              class="px-3 py-1 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">Encryption</span>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- Learning Section -->
+    <section id="learning" class="mb-20">
+      <h3 class="text-3xl md:text-4xl font-bold text-center mb-16 relative">
+        <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">Currently Learning</span>
+        <div
+          class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent">
+        </div>
+      </h3>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-purple-600/20 bg-gradient-to-br from-blue-500/10 to-purple-600/10 p-8 rounded-xl backdrop-blur-lg border border-white/10 transition-all duration-300 transform hover:shadow-xl">
-          <div class="flex items-center gap-4 mb-6">
-            <i class="fab fa-react text-4xl text-blue-400"></i>
-            <h3 class="text-2xl font-bold text-white/90">React & Next.js</h3>
-          </div>
-          <p class="text-base text-white/90 tracking-wide font-medium">モダンなフロントエンド開発の習得に向けて、ReactとNext.jsを学習中。コンポーネント設計からルーティングまで、実践的なスキルを磨いています。</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-base font-medium">React Hooks</span>
-            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-base font-medium">Server Components</span>
-            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-base font-medium">API Routes</span>
-          </div>
+        <div
+          class="glass-card p-8 rounded-2xl group flex flex-col items-center text-center hover:bg-white/5 transition-colors">
+          <i class="fab fa-react text-5xl text-blue-400 mb-6 group-hover:scale-110 transition-transform"></i>
+          <h4 class="text-xl font-bold text-white mb-2">React & Next.js</h4>
+          <p class="text-gray-400 text-sm">モダンなフロントエンド開発とコンポーネント設計を習得中。</p>
         </div>
-        <div class="hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-purple-600/20 bg-gradient-to-br from-blue-500/10 to-purple-600/10 p-8 rounded-xl backdrop-blur-lg border border-white/10 transition-all duration-300 transform hover:shadow-xl">
-          <div class="flex items-center gap-4 mb-6">
-            <i class="fab fa-js text-4xl text-yellow-400"></i>
-            <h3 class="text-2xl font-bold text-white/90">TypeScript</h3>
-          </div>
-          <p class="text-base text-white/90 tracking-wide font-medium">より安全で保守性の高いコードを書くために、TypeScriptの学習に取り組んでいます。型システムの理解を深め、実践的な開発スキルを向上させています。</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-base font-medium">型システム</span>
-            <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-base font-medium">ジェネリクス</span>
-            <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-base font-medium">Interface</span>
-          </div>
+        <div
+          class="glass-card p-8 rounded-2xl group flex flex-col items-center text-center hover:bg-white/5 transition-colors">
+          <i class="fab fa-js text-5xl text-yellow-400 mb-6 group-hover:scale-110 transition-transform"></i>
+          <h4 class="text-xl font-bold text-white mb-2">TypeScript</h4>
+          <p class="text-gray-400 text-sm">堅牢で保守性の高いコードを書くための型システムを学習中。</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- フッター -->
-  <footer class="py-8 px-4 border-t border-white/5">
-    <div class="container mx-auto text-center text-white/50">
-      <div class="flex justify-center items-center space-x-4">
-        <p>© 2024 Disnana - All rights reserved.</p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="glass border-t border-white/5 py-12">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <h5 class="text-2xl font-bold text-white mb-2">tp-li</h5>
+          <p class="text-gray-500 text-sm">&copy; 2024 tp-li / Disnana. All rights reserved.</p>
+        </div>
+
+        <div class="flex space-x-6">
+          <a href="https://x.com/PythonHaru" target="_blank"
+            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:scale-110 transition-all"
+            title="X (Twitter)">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://github.com/harumaki4649" target="_blank"
+            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:scale-110 transition-all"
+            title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:tp-li@disnana.com"
+            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:scale-110 transition-all"
+            title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://tp-li.com/" target="_blank"
+            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-white/10 hover:scale-110 transition-all"
+            title="Website">
+            <i class="fas fa-globe"></i>
+          </a>
+        </div>
+      </div>
+      <div class="mt-8 text-center text-xs text-gray-600 space-x-4">
+        <a href="https://tos.disnana.com" class="hover:text-gray-400 transition-colors">Terms of Service</a>
         <span>|</span>
-        <a href="https://tos.disnana.com" class="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">利用規約</a>
-        <span>|</span>
-        <a href="https://privacypolicy.disnana.com" class="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>
+        <a href="https://privacypolicy.disnana.com" class="hover:text-gray-400 transition-colors">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
-  <!-- カスタムスタイル -->
-  <style>
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-50px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes smoothScroll {
-      from { transform: translateY(0); }
-      to { transform: translateY(var(--scroll-distance)); }
-    }
-    /* モダンスクロールバー */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-
-     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(90deg, #6366F1, #A78BFA); /* 少し明るめの青紫グラデーション */
-        border-radius: 5px;
-        border: 2px solid rgba(255, 255, 255, 0.3); /* 明るさと立体感を演出 */
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(90deg, #818CF8, #C4B5FD); /* ホバーでさらに鮮やかに */
-      }
-
-    ::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 4px;
-    }
-
-    /* Firefox用のスクロールバー */
-    * {
-      scrollbar-width: thin;
-      /*scrollbar-color: rgba(79, 70, 229, 0.7) rgba(255, 255, 255, 0.1);*/
-      scrollbar-color: rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0.1);
-    }
-  </style>
-
-  <!-- JavaScript -->
+  <!-- Animations Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const navLinks = document.querySelectorAll('.nav-link');
-      const topLink = document.getElementById('nav-top');
-      let activeSection = '';
-
-      // セクションへのスムーズスクロール
-      navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetId = link.getAttribute('href').substring(1);
-          const targetSection = document.getElementById(targetId);
-          if (targetSection) {
-            window.scrollTo({
-              top: targetSection.offsetTop - 80, // ナビゲーションバーの高さを考慮
-              behavior: 'smooth'
-            });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
           }
         });
-      });
+      }, { threshold: 0.1 });
 
-      topLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-
-      // 現在のセクションをハイライト
-      const sections = document.querySelectorAll('section');
-      window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 100;
-          if (pageYOffset >= sectionTop) {
-            current = section.getAttribute('id');
-          }
-        });
-
-        if (activeSection !== current) {
-          activeSection = current;
-          navLinks.forEach(link => {
-            if (link.getAttribute('href').substring(1) === current) {
-              link.classList.add('text-white');
-              link.classList.remove('text-white/70');
-            } else {
-              link.classList.remove('text-white');
-              link.classList.add('text-white/70');
-            }
-          });
-        }
+      document.querySelectorAll('.glass-card, h3').forEach(el => {
+        el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700', 'ease-out');
+        observer.observe(el);
       });
     });
   </script>
 </body>
+
 </html>
