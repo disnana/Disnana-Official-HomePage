@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Disnanaは、認証、スパム対策、モデレーション、サーバー管理をまとめたDiscord Botです。" />
+    <meta name="theme-color" content="#080b12" />
+    <title>Disnana | Discordサーバーの管理Bot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Disnana ホーム">
+        <span class="brand-mark">D</span>
+        <span>Disnana</span>
+      </a>
+      <nav class="desktop-nav" aria-label="メインナビゲーション">
+        <a href="#features">機能</a>
+        <a href="#commands">コマンド</a>
+        <a href="#setup">導入方法</a>
+        <a href="#status">稼働状況</a>
+        <a href="#faq">よくある質問</a>
+      </nav>
+      <a class="header-cta" href="https://discord.com/oauth2/authorize?client_id=1129038541322735676" target="_blank" rel="noopener">Botを追加 <span>↗</span></a>
+      <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span></button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy-block">
+          <p class="kicker reveal"><i></i> DISCORD BOT</p>
+          <h1 class="reveal">サーバー管理、<br /><em>もう少しラクに。</em></h1>
+          <p class="hero-copy reveal">認証パネルを置く。荒らしやスパムを抑える。溜まったメッセージを片付ける。Disnanaは、運営でよく使う機能をひとつにまとめたBotです。</p>
+          <div class="hero-actions reveal">
+            <a class="button button-primary" href="https://discord.com/oauth2/authorize?client_id=1129038541322735676" target="_blank" rel="noopener">Discordに追加 <span>↗</span></a>
+            <a class="button button-ghost" href="https://discord.gg/DqWJEm3UrX" target="_blank" rel="noopener">公式Discord <span>→</span></a>
+          </div>
+          <div class="hero-notes reveal">
+            <span><i>✓</i> 無料で導入</span>
+            <span><i>✓</i> 日本語対応</span>
+            <span><i>✓</i> スラッシュコマンド</span>
+          </div>
+        </div>
+
+        <div class="hero-product reveal" aria-label="Disnanaの利用イメージ">
+          <div class="product-glow"></div>
+          <div class="discord-window">
+            <div class="window-rail">
+              <span class="server active">D</span><span class="server"></span><span class="server"></span><span class="server add">+</span>
+            </div>
+            <div class="channel-rail">
+              <b>Disnana Community</b>
+              <small>テキストチャンネル</small>
+              <span class="selected"># はじめに</span><span># お知らせ</span><span># 雑談</span>
+              <small>運営</small><span># mod-log</span><span># support</span>
+            </div>
+            <div class="chat">
+              <div class="chat-header"><b># はじめに</b><span>新しいメンバーを迎えるチャンネルです</span></div>
+              <div class="chat-body">
+                <div class="chat-date">2026年6月21日</div>
+                <div class="message">
+                  <div class="avatar user">N</div>
+                  <div><b>nana <small>18:42</small></b><p>参加しました。よろしくお願いします！</p></div>
+                </div>
+                <div class="message">
+                  <div class="avatar bot">D</div>
+                  <div class="message-content">
+                    <b>Disnana <em>BOT</em> <small>18:42</small></b>
+                    <div class="bot-card">
+                      <span class="card-line"></span>
+                      <b>認証が完了しました</b>
+                      <p>ロールを付与しました。サーバーをお楽しみください。</p>
+                      <small>Disnana authentication</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="chat-input"># はじめに へメッセージを送信</div>
+            </div>
+          </div>
+          <div class="floating-chip chip-a"><i></i><span><b>Spam guard</b><small>監視中</small></span></div>
+          <div class="floating-chip chip-b"><span>42 ms</span><small>応答速度</small></div>
+        </div>
+      </section>
+
+      <section class="quick-bar" aria-label="Disnanaの主な機能">
+        <span>認証</span><span>スパム対策</span><span>メッセージ整理</span><span>モデレーション</span><span>一時VC</span><span>サポート</span>
+      </section>
+
+      <section class="section intro" id="features">
+        <div class="section-title">
+          <p class="kicker">機能</p>
+          <h2>よく使うものを、<br />ちゃんと使いやすく。</h2>
+        </div>
+        <p class="section-lead">機能を増やすだけでは、Botは使いやすくなりません。Disnanaは、サーバーに入った直後の認証から日々の管理まで、運営で繰り返す作業に絞っています。</p>
+      </section>
+
+      <section class="feature-grid">
+        <article class="feature feature-auth">
+          <div class="feature-copy">
+            <span class="feature-no">01</span>
+            <div class="feature-icon">✓</div>
+            <h3>参加者を認証する</h3>
+            <p>認証パネルから手続きを進め、完了したメンバーへロールを付与します。新規参加者の案内を毎回手作業で行う必要がありません。</p>
+          </div>
+          <div class="auth-ui">
+            <div class="auth-user"><span>N</span><div><b>nana</b><small>参加したばかり</small></div></div>
+            <div class="auth-route"><i></i><i></i><i></i></div>
+            <div class="auth-result"><span>✓</span><div><b>認証済み</b><small>Memberロールを付与</small></div></div>
+          </div>
+        </article>
+
+        <article class="feature feature-spam">
+          <span class="feature-no">02</span>
+          <div class="feature-icon">⌁</div>
+          <h3>連投や荒らしを検知</h3>
+          <p>短時間の連投や不審な動きを監視します。問題が起きてからログを追いかける負担を減らします。</p>
+          <div class="pulse-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="guard-label"><i></i> Spam tracker active</div>
+        </article>
+
+        <article class="feature feature-purge">
+          <span class="feature-no">03</span>
+          <div class="feature-icon">⌘</div>
+          <h3>メッセージをまとめて整理</h3>
+          <p>件数を指定して、一度に削除できます。案内の入れ替えや荒らし対応の後片付けに使えます。</p>
+          <div class="command-box"><span>/</span><b>purge</b><em>件数</em><strong>50</strong></div>
+        </article>
+
+        <article class="feature feature-mod">
+          <div class="feature-copy">
+            <span class="feature-no">04</span>
+            <div class="feature-icon">◇</div>
+            <h3>判断と記録を残す</h3>
+            <p>モデレーションの結果を記録し、あとから確認できる状態にします。運営メンバー同士の引き継ぎにも使えます。</p>
+          </div>
+          <div class="log-ui">
+            <div><i class="ok"></i><span><b>Message checked</b><small># general · 18:42:03</small></span><em>許可</em></div>
+            <div><i class="warn"></i><span><b>Spam detected</b><small># community · 18:46:18</small></span><em>記録</em></div>
+            <div><i class="ok"></i><span><b>Member verified</b><small># verify · 18:51:42</small></span><em>完了</em></div>
+          </div>
+        </article>
+
+        <article class="feature feature-small">
+          <span class="feature-no">05</span><div class="feature-icon">◉</div><h3>一時ボイスチャンネル</h3><p>必要なときだけ使えるボイスチャンネルを作成します。</p>
+        </article>
+        <article class="feature feature-small">
+          <span class="feature-no">06</span><div class="feature-icon">?</div><h3>困ったときの窓口</h3><p>Botのコマンドからサポートへつながる導線を用意しています。</p>
+        </article>
+      </section>
+
+      <section class="command-section" id="commands">
+        <div class="command-side">
+          <p class="kicker">コマンド</p>
+          <h2>入力途中でも、<br />Discordが案内します。</h2>
+          <p>Disnanaはスラッシュコマンドに対応しています。コマンド名を丸暗記しなくても、候補と説明を見ながら操作できます。</p>
+          <a href="https://discord.gg/DqWJEm3UrX" target="_blank" rel="noopener">使い方を聞く <span>→</span></a>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>disnana / commands</span></div>
+          <div class="terminal-body">
+            <div class="terminal-input"><span>/</span>help<i></i></div>
+            <p class="terminal-note">Disnanaが使えるコマンド</p>
+            <div class="command-row"><code>/auth</code><span>認証パネルを作成する</span><kbd>管理</kbd></div>
+            <div class="command-row"><code>/purge</code><span>メッセージを指定件数削除する</span><kbd>整理</kbd></div>
+            <div class="command-row"><code>/ping</code><span>Botの応答速度を確認する</span><kbd>情報</kbd></div>
+            <div class="command-row"><code>/support</code><span>サポート情報を表示する</span><kbd>案内</kbd></div>
+            <div class="command-row"><code>/about</code><span>Botの情報を表示する</span><kbd>情報</kbd></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="setup-section" id="setup">
+        <div class="setup-head">
+          <p class="kicker">導入方法</p>
+          <h2>招待リンクを開けば、<br />すぐに始められます。</h2>
+          <a class="button button-primary" href="https://discord.com/oauth2/authorize?client_id=1129038541322735676" target="_blank" rel="noopener">Botを招待 <span>↗</span></a>
+        </div>
+        <ol class="setup-list">
+          <li><span>1</span><div><h3>サーバーを選ぶ</h3><p>招待画面から、Disnanaを追加するサーバーを選びます。</p></div></li>
+          <li><span>2</span><div><h3>権限を確認する</h3><p>表示された権限を確認して、Discord上で承認します。</p></div></li>
+          <li><span>3</span><div><h3>コマンドを試す</h3><p>サーバーで <code>/help</code> を入力すると、使える機能を確認できます。</p></div></li>
+        </ol>
+      </section>
+
+      <section class="reliability">
+        <div class="reliability-visual" aria-hidden="true">
+          <div class="orbit orbit-1"></div><div class="orbit orbit-2"></div><div class="orbit orbit-3"></div>
+          <div class="core">D<i></i></div>
+          <span class="node node-1">API</span><span class="node node-2">BOT</span><span class="node node-3">DB</span>
+        </div>
+        <div class="reliability-copy">
+          <p class="kicker">運用</p>
+          <h2>一部が止まっても、<br />全部は巻き込まない。</h2>
+          <p>Disnanaは機能ごとに障害を切り分けます。外部サービスで問題が起きた場合は、影響のある機能だけを止め、利用できる機能は動かし続けます。</p>
+          <dl>
+            <div><dt>自動復旧</dt><dd>問題を検知した機能を切り離し、復旧を試みます。</dd></div>
+            <div><dt>エラー記録</dt><dd>運営側が原因を追えるよう、発生したエラーを保存します。</dd></div>
+            <div><dt>更新失敗への備え</dt><dd>正常に起動できない更新は、前の状態へ戻せる構成です。</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="status-section" id="status">
+        <div class="status-head">
+          <div><p class="kicker">稼働状況</p><h2>調子が悪いと感じたら、<br />ここを確認してください。</h2></div>
+          <p>障害とメンテナンス情報はステータスページと公式Discordで案内します。</p>
+        </div>
+        <div class="status-grid">
+          <div class="status-card">
+            <div class="status-card-head"><b>全体の稼働状況</b><span>LIVE</span></div>
+            <iframe class="status-badge" title="Disnana 全体の稼働状況" src="https://status.disnana.com/badge?theme=dark" width="250" height="30" frameborder="0" scrolling="no" loading="lazy" style="color-scheme: normal"></iframe>
+            <p class="status-caption">障害やメンテナンス情報は、公式ステータスページで確認できます。</p>
+            <a class="status-page-link" href="https://status.disnana.com" target="_blank" rel="noopener">詳しい稼働状況を見る <span>↗</span></a>
+          </div>
+          <a class="contact-card" href="https://discord.gg/DqWJEm3UrX" target="_blank" rel="noopener">
+            <small>お知らせとサポート</small><b>公式Discord</b><p>障害、メンテナンス、更新情報を確認できます。質問や不具合の連絡もこちらへ。</p><span>参加する ↗</span>
+          </a>
+          <a class="contact-card" href="mailto:support@disnana.com">
+            <small>メール</small><b>support@disnana.com</b><p>Discordを使わずに連絡したい場合は、メールでも受け付けています。</p><span>メールを作成 ↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="faq-section" id="faq">
+        <div class="faq-title"><p class="kicker">よくある質問</p><h2>導入前に気になること。</h2></div>
+        <div class="faq-list">
+          <details><summary>Disnanaは無料で使えますか？<span>+</span></summary><p>はい。Botの招待リンクからサーバーへ追加できます。</p></details>
+          <details><summary>どの権限が必要ですか？<span>+</span></summary><p>招待画面に必要な権限が表示されます。利用する機能によって、ロール管理やメッセージ管理などの権限が必要です。</p></details>
+          <details><summary>不具合や荒らしの相談はどこですか？<span>+</span></summary><p>公式Discord、または support@disnana.com へご連絡ください。稼働中の障害はステータスページでも確認できます。</p></details>
+          <details><summary>利用規約とプライバシーポリシーはありますか？<span>+</span></summary><p>ページ下部のリンクから確認できます。Botを導入する前にお読みください。</p></details>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <p class="kicker">DISNANA</p>
+        <h2>まずはサーバーに追加して、<br /><em>/help</em> を試してください。</h2>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://discord.com/oauth2/authorize?client_id=1129038541322735676" target="_blank" rel="noopener">Discordに追加 <span>↗</span></a>
+          <a class="button button-ghost" href="https://discord.gg/DqWJEm3UrX" target="_blank" rel="noopener">質問する <span>→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-main">
+        <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark">D</span><span>Disnana</span></a><p>Discordサーバーの認証と管理を手伝うBotです。</p></div>
+        <div class="footer-links">
+          <div><b>サイト</b><a href="#features">機能</a><a href="#commands">コマンド</a><a href="#setup">導入方法</a><a href="#faq">よくある質問</a></div>
+          <div><b>サポート</b><a href="https://discord.gg/DqWJEm3UrX" target="_blank" rel="noopener">公式Discord</a><a href="mailto:support@disnana.com">メール</a><a href="https://status.disnana.com" target="_blank" rel="noopener">ステータス</a></div>
+          <div><b>ポリシー</b><a href="https://tos.disnana.com/" target="_blank" rel="noopener">利用規約</a><a href="https://privacypolicy.disnana.com/" target="_blank" rel="noopener">プライバシーポリシー</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Disnana</span><a href="https://discord.com/oauth2/authorize?client_id=1129038541322735676" target="_blank" rel="noopener">Botを追加 ↗</a></div>
+    </footer>
+
+    <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="167185" async="async" type="text/javascript"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
