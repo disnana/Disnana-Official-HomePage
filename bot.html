@@ -23,10 +23,14 @@
         <a href="#features">機能</a>
         <a href="#commands">コマンド</a>
         <a href="#setup">導入方法</a>
+        <a href="#dashboard">ダッシュボード</a>
         <a href="#status">稼働状況</a>
         <a href="#faq">よくある質問</a>
       </nav>
-      <a class="header-cta" href="https://discord.com/oauth2/authorize?client_id=1129038541322735676" target="_blank" rel="noopener">Botを追加 <span>↗</span></a>
+      <div class="header-actions">
+        <a class="header-link" href="https://dashboard.disnana.com" target="_blank" rel="noopener">Dashboard <span>↗</span></a>
+        <a class="header-cta" href="https://discord.com/oauth2/authorize?client_id=1129038541322735676" target="_blank" rel="noopener">Botを追加 <span>↗</span></a>
+      </div>
       <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span></button>
     </header>
 
@@ -38,6 +42,7 @@
           <p class="hero-copy reveal">認証パネルを置く。荒らしやスパムを抑える。溜まったメッセージを片付ける。Disnanaは、運営でよく使う機能をひとつにまとめたBotです。</p>
           <div class="hero-actions reveal">
             <a class="button button-primary" href="https://discord.com/oauth2/authorize?client_id=1129038541322735676" target="_blank" rel="noopener">Discordに追加 <span>↗</span></a>
+            <a class="button button-ghost" href="https://dashboard.disnana.com" target="_blank" rel="noopener">ダッシュボード <span>↗</span></a>
             <a class="button button-ghost" href="https://discord.gg/DqWJEm3UrX" target="_blank" rel="noopener">公式Discord <span>→</span></a>
           </div>
           <div class="hero-notes reveal">
@@ -89,7 +94,7 @@
       </section>
 
       <section class="quick-bar" aria-label="Disnanaの主な機能">
-        <span>認証</span><span>スパム対策</span><span>メッセージ整理</span><span>モデレーション</span><span>一時VC</span><span>サポート</span>
+        <span>認証</span><span>スパム対策</span><span>メッセージ整理</span><span>モデレーション</span><span>ダッシュボード</span><span>サポート</span>
       </section>
 
       <section class="section intro" id="features">
@@ -188,6 +193,45 @@
         </ol>
       </section>
 
+      <section class="dashboard-section" id="dashboard">
+        <div class="dashboard-copy">
+          <p class="kicker">Dashboard</p>
+          <h2>設定や確認は、<br />ブラウザからも。</h2>
+          <p>Disnanaのダッシュボードでは、Botを導入したサーバーの設定や状態をブラウザから確認できます。Discord上のコマンドと合わせて、運営メンバーが扱いやすい方法を選べます。</p>
+          <a class="button button-primary" href="https://dashboard.disnana.com" target="_blank" rel="noopener">ダッシュボードを開く <span>↗</span></a>
+        </div>
+        <div class="dashboard-preview" aria-label="Disnana Dashboardのイメージ">
+          <div class="dashboard-window">
+            <div class="dashboard-window-bar"><i></i><i></i><i></i><span>dashboard.disnana.com</span></div>
+            <div class="dashboard-body">
+              <aside>
+                <b>Disnana<small>ダッシュボード</small></b>
+                <span class="active">概要</span>
+                <span>サーバー</span>
+                <span>コマンド</span>
+              </aside>
+              <div class="dashboard-panel">
+                <div class="dashboard-panel-head"><b>Disnana ダッシュボード</b><small>稼働状況と設定を確認できます</small></div>
+                <div class="dashboard-stats">
+                  <div><span>総サーバー数</span><b>271</b><small>+0.7% 先月比</small></div>
+                  <div><span>総ユーザー数</span><b>25,349</b><small>+0.3% 先月比</small></div>
+                  <div><span>Bot ステータス</span><b>オンライン</b><small>174ms</small></div>
+                </div>
+                <div class="dashboard-chart">
+                  <div class="chart-title">Ping 速度推移</div>
+                  <div class="chart-lines">
+                    <i class="line line-discord"></i>
+                    <i class="line line-api"></i>
+                    <i class="line line-db"></i>
+                  </div>
+                  <div class="chart-legend"><span>Cloudflare</span><span>DNS</span><span>Database</span><span>Discord</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="reliability">
         <div class="reliability-visual" aria-hidden="true">
           <div class="orbit orbit-1"></div><div class="orbit orbit-2"></div><div class="orbit orbit-3"></div>
@@ -252,7 +296,7 @@
         <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark">D</span><span>Disnana</span></a><p>Discordサーバーの認証と管理を手伝うBotです。</p></div>
         <div class="footer-links">
           <div><b>サイト</b><a href="#features">機能</a><a href="#commands">コマンド</a><a href="#setup">導入方法</a><a href="#faq">よくある質問</a></div>
-          <div><b>サポート</b><a href="https://discord.gg/DqWJEm3UrX" target="_blank" rel="noopener">公式Discord</a><a href="mailto:support@disnana.com">メール</a><a href="https://status.disnana.com" target="_blank" rel="noopener">ステータス</a></div>
+          <div><b>サポート</b><a href="https://dashboard.disnana.com" target="_blank" rel="noopener">ダッシュボード</a><a href="https://discord.gg/DqWJEm3UrX" target="_blank" rel="noopener">公式Discord</a><a href="mailto:support@disnana.com">メール</a><a href="https://status.disnana.com" target="_blank" rel="noopener">ステータス</a></div>
           <div><b>ポリシー</b><a href="https://tos.disnana.com/" target="_blank" rel="noopener">利用規約</a><a href="https://privacypolicy.disnana.com/" target="_blank" rel="noopener">プライバシーポリシー</a></div>
         </div>
       </div>
