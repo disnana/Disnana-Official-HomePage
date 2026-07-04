@@ -32,7 +32,7 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 },
 );
 
-document.querySelectorAll(".feature, .command-side, .terminal, .setup-list li, .reliability-copy, .reliability-visual, .status-card, .contact-card, .faq-list").forEach((element) => {
+document.querySelectorAll(".feature, .command-side, .terminal, .setup-list li, .dashboard-copy, .dashboard-preview, .reliability-copy, .reliability-visual, .status-card, .contact-card, .faq-list").forEach((element) => {
   element.style.opacity = "0";
   observer.observe(element);
 });
