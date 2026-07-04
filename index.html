@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Disnana公式ポータル。Bot、ダッシュボード、ステータス、規約、プライバシーポリシー、開発者情報をまとめています。" />
+    <meta name="theme-color" content="#080a10" />
+    <title>Disnana | Official Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      (() => {
+        try {
+          const storedTheme = localStorage.getItem("disnana-theme");
+          const theme = storedTheme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.dataset.theme = theme;
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header">
+        <div class="header-inner">
+          <a class="brand" href="#top" aria-label="Disnana Portal">
+            <span class="brand-mark">
+              <img class="brand-mark-light" src="./assets/disnana-icon-light.png" alt="" />
+              <img class="brand-mark-dark" src="./assets/disnana-icon-dark-cropped.png" alt="" />
+            </span>
+            <span>Disnana</span>
+          </a>
+          <nav aria-label="メインナビゲーション">
+            <a href="#links">Links</a>
+            <a href="#features">Features</a>
+            <a href="#projects">Projects</a>
+            <a href="#developer">Developer</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <button class="theme-toggle" type="button" aria-label="テーマを切り替える" aria-pressed="false">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+            <span class="theme-toggle-text">Theme</span>
+          </button>
+          <a class="header-cta" href="https://dashboard.disnana.com" target="_blank" rel="noopener">Dashboard</a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero-layout">
+            <div class="hero-inner">
+              <p class="eyebrow">Official Portal</p>
+              <h1>Disnanaの公式情報を、ひとつの入口に。</h1>
+              <p class="lead">Botの紹介、管理ダッシュボード、稼働状況、規約、プライバシーポリシー、開発者情報まで。迷いやすい関連ページを、目的ごとに整理した公式ポータルです。</p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="https://disnana.com/bot">Disnanaを見る <span>↗</span></a>
+                <a class="button button-secondary" href="https://dashboard.disnana.com" target="_blank" rel="noopener">ダッシュボード <span>↗</span></a>
+              </div>
+              <div class="hero-meta" aria-label="Disnanaの主な領域">
+                <span>Discord Bot</span>
+                <span>Security</span>
+                <span>Dashboard</span>
+              </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+              <img src="./assets/main-hero.png" alt="" />
+            </div>
+          </div>
+        </section>
+
+        <section class="shortcut-section" aria-label="主要リンク">
+          <a class="shortcut-card" href="https://disnana.com/bot">
+            <span>Disnana Bot</span>
+            <b>Botの機能と導入案内</b>
+            <em>公式サイトを見る ↗</em>
+          </a>
+          <a class="shortcut-card" href="https://dashboard.disnana.com" target="_blank" rel="noopener">
+            <span>Dashboard</span>
+            <b>稼働状況と設定確認</b>
+            <em>管理画面を開く ↗</em>
+          </a>
+        </section>
+
+        <section id="links">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Official Links</p>
+              <h2>用途ごとの公式ページ。</h2>
+            </div>
+            <p>導入、設定、稼働確認、規約確認、サポートへの参加。それぞれの目的に合わせて、必要なページへすぐ移動できます。</p>
+          </div>
+          <div class="link-grid">
+            <article class="card large"><span class="label">Bot</span><h3>Bot公式サイト</h3><p>Disnanaの機能、導入方法、サポート情報を確認できます。まずBotについて知りたい場合はこちらです。</p><a href="https://disnana.com/bot">開く ↗</a></article>
+            <article class="card"><span class="label">Dashboard</span><h3>管理ダッシュボード</h3><p>稼働状況やサーバー関連の情報をブラウザから確認できます。</p><a href="https://dashboard.disnana.com" target="_blank" rel="noopener">開く ↗</a></article>
+            <article class="card"><span class="label">Status</span><h3>ステータス</h3><p>障害、メンテナンス、サービスの稼働状況を確認できます。</p><a href="https://status.disnana.com" target="_blank" rel="noopener">開く ↗</a></article>
+            <article class="card compact"><span class="label">Terms</span><h3>利用規約</h3><p>利用前に確認してほしいルールを掲載しています。</p><a href="https://tos.disnana.com" target="_blank" rel="noopener">読む ↗</a></article>
+            <article class="card compact"><span class="label">Privacy</span><h3>プライバシーポリシー</h3><p>データの取り扱い方針を確認できます。</p><a href="https://privacypolicy.disnana.com" target="_blank" rel="noopener">読む ↗</a></article>
+          </div>
+        </section>
+
+        <section id="features">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Disnana</p>
+              <h2>安全で高度なDiscordサーバー管理。</h2>
+            </div>
+            <p>初代「ななはる♪」から進化したDisnanaは、不適切発言検知、荒らし対策、認証、ログ記録、インフラ監視まで、コミュニティ運営に必要な機能を広く支えます。</p>
+          </div>
+          <div class="feature-list">
+            <article class="feature-item"><h3>不適切発言検知</h3><p>AIを活用した不適切コンテンツ検出で、サーバーの健全性を維持します。</p></article>
+            <article class="feature-item"><h3>荒らし対策</h3><p>連投やレイド攻撃、不審な動きを検知し、被害が広がる前に対応します。</p></article>
+            <article class="feature-item"><h3>ボット認証</h3><p>不審な参加を抑え、認証されたユーザーが安全に参加できる環境を作ります。</p></article>
+            <article class="feature-item"><h3>分散インフラ</h3><p>VPSと自宅サーバーを組み合わせ、可用性と柔軟性を重視して運用しています。</p></article>
+            <article class="feature-item"><h3>高速ネットワーク</h3><p>500Mbpsから最大10Gbps級の回線を活用し、安定した応答を目指します。</p></article>
+            <article class="feature-item"><h3>記録と監視</h3><p>詳細なログ記録と監視体制により、問題発生時の確認と改善につなげます。</p></article>
+          </div>
+        </section>
+
+        <section id="projects">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Projects</p>
+              <h2>Disnanaを支える周辺プロジェクト。</h2>
+            </div>
+            <p>Botだけでなく、認証、セキュリティ、ライセンス保護、開発者ツールなどの技術プロジェクトがDisnanaの進化につながっています。</p>
+          </div>
+          <div class="project-strip">
+            <article class="project-card"><span class="label">Discord Bot</span><h3>Disnana Bot</h3><p>認証、モデレーション、管理、サポート導線を備えた多機能Discord Botです。</p></article>
+            <article class="project-card"><span class="label">Security Manager</span><h3>次世代防衛システム</h3><p>高度なユーザー認証と行動分析を通じて、脅威を未然に排除する構想です。</p></article>
+            <article class="project-card"><span class="label">Neon Project</span><h3>ライセンス保護</h3><p>解析困難なライセンス認証システムとセキュアローダーを研究開発しています。</p></article>
+          </div>
+        </section>
+
+        <section id="developer">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Developer</p>
+              <h2>開発者について。</h2>
+            </div>
+            <p>Disnanaは、Python開発、インフラ運用、セキュリティ実装を中心に活動する tp-li によって創設・開発されています。</p>
+          </div>
+          <div class="developer-layout">
+            <article class="profile-card">
+              <div class="avatar">tp</div>
+              <h3>tp-li</h3>
+              <p class="role">Pythonデベロッパー / インフラエンジニア / Disnana創設者</p>
+              <p>コードを通じて実用的なソリューションを構築する、オープンソースクリエイター & Discord Bot開発者です。</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="https://tp-li.com" target="_blank" rel="noopener">tp-li.com <span>↗</span></a>
+                <a class="button button-secondary" href="https://github.com/harumaki4649" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+              </div>
+              <div class="tags">
+                <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>SQLite</span><span>Docker</span><span>Ubuntu Server</span><span>Cloudflare</span><span>Security</span>
+              </div>
+            </article>
+            <article class="detail-card">
+              <h3>こんな人が開発しています</h3>
+              <p>Pythonとインフラを中心に、実用的なソフトウェア開発とサービス運営を行っています。Oracle Cloud、Google Cloud、自宅サーバーを組み合わせた運用、Discord Bot開発、API開発、データベース設計、セキュリティ実装などが主な領域です。</p>
+              <div class="skill-grid">
+                <div><b>開発</b><span>Python / FastAPI / Discord API / API統合 / 決済システム統合</span></div>
+                <div><b>データベース</b><span>PostgreSQL / SQLite / NanaSQLite / NyanSQLite / DictSQLite / 最適化</span></div>
+                <div><b>インフラ</b><span>Docker / Ubuntu Server / Oracle Cloud / Google Cloud / 自宅サーバー</span></div>
+                <div><b>セキュリティ</b><span>脆弱性報告 / PAM / OTP認証 / コード保護 / 監視</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Contact</p>
+              <h2>問い合わせと公式アカウント。</h2>
+            </div>
+            <p>Disnanaに関するサポートは公式Discordまたはメールへ。開発者個人の情報は tp-li.com から確認できます。</p>
+          </div>
+          <div class="contact-grid">
+            <article class="card compact"><span class="label">Disnana Support</span><h3>公式サポート</h3><p>質問、不具合、導入相談は公式Discordまたはメールで受け付けています。</p><a href="mailto:support@disnana.com">support@disnana.com ↗</a></article>
+            <article class="card compact"><span class="label">Developer</span><h3>tp-li</h3><p>個人プロフィール、制作物、GitHub、連絡先は開発者サイトから確認できます。</p><a href="https://tp-li.com" target="_blank" rel="noopener">tp-li.com ↗</a></article>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-inner">
+          <span>© 2026 Disnana. All rights reserved.</span>
+          <div class="footer-links">
+            <a href="https://disnana.com/bot">Bot</a>
+            <a href="https://tos.disnana.com" target="_blank" rel="noopener">利用規約</a>
+            <a href="https://privacypolicy.disnana.com" target="_blank" rel="noopener">プライバシーポリシー</a>
+            <a href="https://tp-li.com" target="_blank" rel="noopener">Developer</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
