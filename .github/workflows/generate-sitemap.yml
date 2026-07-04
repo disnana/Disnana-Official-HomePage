@@ -1,56 +1,47 @@
 name: Generate Sitemap
 
 on:
-push:
-branches:
-- main
-workflow_dispatch:
-
-### 2. 実行する処理（ジョブ）
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-build:
-runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-```
-steps:
-# リポジトリのコードをチェックアウト
-- name: Checkout code
-  uses: actions/checkout@v4
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-# HTMLファイルを検索してsitemap.xmlを生成するスクリプト
-- name: Generate sitemap.xml
-  run: |
-    DOMAIN="https://disnana.com"
-    SITEMAP="sitemap.xml"
+    - name: Generate sitemap.xml
+      run: |
+        DOMAIN="https://disnana.com"
+        SITEMAP="sitemap.xml"
 
-    echo '<?xml version="1.0" encoding="UTF-8"?>' > $SITEMAP
-    echo '<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">' >> $SITEMAP
+        echo '<?xml version="1.0" encoding="UTF-8"?>' > $SITEMAP
+        echo '<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">' >> $SITEMAP
 
-    # ルートディレクトリのhtmlファイルをループ処理（最大深さ1）
-    find . -maxdepth 1 -name "*.html" | while read -r file; do
-      # ./index.html から index.html を抽出
-      filename=$(basename "$file")
-      
-      echo "  <url>" >> $SITEMAP
-      echo "    <loc>${DOMAIN}/${filename}</loc>" >> $SITEMAP
-      echo "    <lastmod>$(date +%Y-%m-%d)</lastmod>" >> $SITEMAP
-      echo "  </url>" >> $SITEMAP
-    done
+        find . -maxdepth 1 -type f -name '*.html' | while read -r file; do
+          filename=$(basename "$file")
+          
+          echo "  <url>" >> $SITEMAP
+          echo "    <loc>${DOMAIN}/${filename}</loc>" >> $SITEMAP
+          echo "    <lastmod>$(date +%Y-%m-%d)</lastmod>" >> $SITEMAP
+          echo "  </url>" >> $SITEMAP
+        done
 
-    echo '</urlset>' >> $SITEMAP
+        echo '</urlset>' >> $SITEMAP
 
-# 生成されたsitemap.xmlをリポジトリにコミットしてプッシュ
-- name: Commit and Push sitemap
-  run: |
-    git config --local user.email "github-actions[bot]@users.noreply.github.com"
-    git config --local user.name "github-actions[bot]"
-    git add sitemap.xml
-    
-    # 変更がある場合のみコミットしてプッシュ
-    if ! git diff --cached --quiet; then
-      git commit -m "chore: update sitemap.xml [skip ci]"
-      git push
-    else
-      echo "No changes in sitemap.xml"
-    fi
+    - name: Commit and Push sitemap
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add sitemap.xml
+        
+        if ! git diff --cached --quiet; then
+          git commit -m "chore: update sitemap.xml [skip ci]"
+          git push
+        else
+          echo "No changes in sitemap.xml"
+        fi
