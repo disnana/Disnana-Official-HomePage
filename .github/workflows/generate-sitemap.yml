@@ -28,8 +28,15 @@ jobs:
           # 拡張子 .html を取り除いたファイル名を取得
           filename=$(basename "$file" .html)
           
+          # indexの場合はURLをドメイン直下（/）にし、それ以外はファイル名にする
+          if [ "$filename" = "index" ]; then
+            url="${DOMAIN}/"
+          else
+            url="${DOMAIN}/${filename}"
+          fi
+          
           echo "  <url>" >> $SITEMAP
-          echo "    <loc>${DOMAIN}/${filename}</loc>" >> $SITEMAP
+          echo "    <loc>${url}</loc>" >> $SITEMAP
           echo "    <lastmod>$(date +%Y-%m-%d)</lastmod>" >> $SITEMAP
           echo "  </url>" >> $SITEMAP
         done
