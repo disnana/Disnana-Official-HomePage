@@ -39,8 +39,8 @@
 }
 
 :root {
-  --hero-left: #f5f9ff;
-  --hero-right: #e3edfb;
+  --hero-left: #eaf2ff;
+  --hero-right: #c9dcf7;
 }
 
 * { box-sizing: border-box; }
@@ -184,6 +184,7 @@ nav a:hover { color: var(--brand); }
     linear-gradient(90deg, var(--hero-left) 0%, color-mix(in srgb, var(--hero-left) 72%, var(--hero-right)) 48%, var(--hero-right) 100%);
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
 }
 
 .hero::before {
@@ -354,8 +355,10 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   border: 0;
-  padding: 34px 0 88px;
+  padding: 48px 0;
   background: transparent;
+  position: relative;
+  isolation: isolate;
 }
 
 .shortcut-section::before {
@@ -366,12 +369,12 @@ h1 {
   width: 100vw;
   height: 100%;
   transform: translateX(-50%);
-  background: color-mix(in srgb, var(--surface-soft) 58%, transparent);
+  background: linear-gradient(180deg, #d4e3f7 0%, #eef4fb 100%);
   z-index: -1;
 }
 
 :root[data-theme="dark"] .shortcut-section::before {
-  background: rgba(255,255,255,.015);
+  background: linear-gradient(180deg, #15345f 0%, #0b1c31 100%);
 }
 
 .shortcut-card {
@@ -687,14 +690,23 @@ footer {
 
 .footer-inner {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 
 .footer-links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 18px;
+  line-height: 1.4;
+}
+
+.footer-links a {
+  min-height: 20px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .footer-links a:hover { color: var(--brand); }
@@ -749,8 +761,8 @@ footer {
   .button { width: 100%; min-height: 44px; padding: 0 18px; }
   .hero-meta { margin-top: 18px; gap: 7px; }
   .hero-meta span { font-size: 11px; padding: 7px 9px; }
-  .shortcut-section { grid-template-columns: 1fr; margin-top: 0; padding: 22px 0 56px; gap: 12px; }
-  .shortcut-section::before { display: none; }
+  .shortcut-section { grid-template-columns: 1fr; margin-top: 0; padding: 28px 0; gap: 12px; }
+  .shortcut-section::before { display: block; }
   .shortcut-card { min-height: 132px; padding: 22px; }
   .shortcut-card b { font-size: 21px; }
   .shortcut-card em { margin-top: 18px; padding: 10px 16px; }
