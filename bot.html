@@ -63,29 +63,29 @@
     </p>
   </main>
 
-  <script>
-    const redirectUrl =
-      "https://bot.disnana.com" +
-      window.location.pathname +
-      window.location.search +
-      window.location.hash;
+<script>
+  const newPath = window.location.pathname.replace(/^\/bot(?=\/|$)/, "");
 
-    const redirectLink = document.getElementById("redirect-link");
-    const countdown = document.getElementById("countdown");
+  const redirectUrl =
+    "https://bot.disnana.com" +
+    (newPath || "/") +
+    window.location.search +
+    window.location.hash;
 
-    redirectLink.href = redirectUrl;
+  document.getElementById("redirect-link").href = redirectUrl;
 
-    let remainingSeconds = 3;
+  let remainingSeconds = 3;
+  const countdown = document.getElementById("countdown");
 
-    const timer = setInterval(() => {
-      remainingSeconds--;
-      countdown.textContent = remainingSeconds;
+  const timer = setInterval(() => {
+    remainingSeconds--;
+    countdown.textContent = remainingSeconds;
 
-      if (remainingSeconds <= 0) {
-        clearInterval(timer);
-        window.location.replace(redirectUrl);
-      }
-    }, 1000);
-  </script>
+    if (remainingSeconds <= 0) {
+      clearInterval(timer);
+      window.location.replace(redirectUrl);
+    }
+  }, 1000);
+</script>
 </body>
 </html>
