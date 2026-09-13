@@ -1,63 +1,87 @@
-const themeToggle = document.querySelector(".theme-toggle");
-const themeToggleText = document.querySelector(".theme-toggle-text");
-const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
+(() => {
+  const root = document.documentElement;
+  const themeToggle = document.querySelector(".theme-toggle");
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const mobileLayout = window.matchMedia("(max-width: 920px)");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navigation = document.querySelector(".site-nav");
+  const header = document.querySelector(".site-header");
 
-const getStoredTheme = () => {
-  try {
-    return localStorage.getItem("disnana-theme");
-  } catch {
-    return null;
-  }
-};
+  const getStoredTheme = () => {
+    try {
+      const theme = localStorage.getItem("disnana-theme");
+      return theme === "light" || theme === "dark" ? theme : null;
+    } catch {
+      return null;
+    }
+  };
 
-const storeTheme = (theme) => {
-  try {
-    localStorage.setItem("disnana-theme", theme);
-  } catch {
-    return null;
-  }
-};
+  let selectedTheme = getStoredTheme();
+  const applyTheme = () => {
+    const theme = selectedTheme || (systemTheme.matches ? "dark" : "light");
+    root.dataset.theme = theme;
+    themeToggle?.setAttribute("aria-pressed", String(theme === "dark"));
+    if (themeToggle) themeToggle.title = theme === "dark" ? "ライトモードに切り替え" : "ダークモードに切り替え";
+    if (themeColorMeta) themeColorMeta.content = theme === "dark" ? "#0d1422" : "#f8f9fc";
+  };
 
-const getPreferredTheme = () => getStoredTheme() || (systemTheme.matches ? "light" : "dark");
+  themeToggle?.addEventListener("click", () => {
+    selectedTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    try {
+      localStorage.setItem("disnana-theme", selectedTheme);
+    } catch {}
+    applyTheme();
+  });
 
-const applyTheme = (theme) => {
-  document.documentElement.dataset.theme = theme;
-  const isLight = theme === "light";
-  themeToggle?.setAttribute("aria-pressed", String(isLight));
-  if (themeToggleText) themeToggleText.textContent = isLight ? "Light" : "Dark";
-  if (themeColorMeta) themeColorMeta.setAttribute("content", isLight ? "#f6f8fc" : "#080a10");
-};
+  systemTheme.addEventListener("change", applyTheme);
+  applyTheme();
+  if (themeToggle) themeToggle.hidden = false;
 
-applyTheme(getPreferredTheme());
+  if (menuToggle && navigation) {
+    const setMenuOpen = (open) => {
+      menuToggle.setAttribute("aria-expanded", String(open));
+      navigation.classList.toggle("is-open", open);
+    };
 
-themeToggle?.addEventListener("click", () => {
-  const currentTheme = document.documentElement.dataset.theme || getPreferredTheme();
-  const nextTheme = currentTheme === "light" ? "dark" : "light";
-  storeTheme(nextTheme);
-  applyTheme(nextTheme);
-});
-
-systemTheme.addEventListener("change", () => {
-  if (!getStoredTheme()) applyTheme(getPreferredTheme());
-});
-
-const revealTargets = document.querySelectorAll(
-  ".shortcut-card, .card, .feature-item, .project-card, .profile-card, .detail-card, .contact-grid",
-);
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("is-visible");
-      revealObserver.unobserve(entry.target);
+    menuToggle.addEventListener("click", (event) => {
+      const open = menuToggle.getAttribute("aria-expanded") !== "true";
+      setMenuOpen(open);
+      if (open && event.detail === 0) navigation.querySelector("a")?.focus();
     });
-  },
-  { threshold: 0.12 },
-);
 
-revealTargets.forEach((element) => {
-  element.classList.add("reveal");
-  revealObserver.observe(element);
-});
+    navigation.addEventListener("click", (event) => {
+      const link = event.target.closest("a");
+      if (!link) return;
+      const wasOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      setMenuOpen(false);
+      // Move keyboard focus with an in-page link when closing the mobile menu.
+      if (wasOpen && link.hash) {
+        const destination = document.getElementById(link.hash.slice(1));
+        if (destination) {
+          destination.setAttribute("tabindex", "-1");
+          destination.focus({ preventScroll: true });
+        }
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false);
+        menuToggle.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!header?.contains(event.target)) setMenuOpen(false);
+    });
+
+    mobileLayout.addEventListener("change", () => setMenuOpen(false));
+    menuToggle.hidden = false;
+    root.dataset.enhanced = "true";
+  }
+
+  document.querySelectorAll("[data-current-year]").forEach((element) => {
+    element.textContent = String(new Date().getFullYear());
+  });
+})();
