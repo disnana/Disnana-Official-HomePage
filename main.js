@@ -3,7 +3,7 @@
   const themeToggle = document.querySelector(".theme-toggle");
   const themeColorMeta = document.querySelector('meta[name="theme-color"]');
   const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
-  const mobileLayout = window.matchMedia("(max-width: 920px)");
+  const mobileLayout = window.matchMedia("(max-width: 64rem)");
   const menuToggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector(".site-nav");
   const header = document.querySelector(".site-header");
@@ -76,7 +76,13 @@
       if (!header?.contains(event.target)) setMenuOpen(false);
     });
 
-    mobileLayout.addEventListener("change", () => setMenuOpen(false));
+    mobileLayout.addEventListener("change", (event) => {
+      const focusedNavigation = navigation.contains(document.activeElement);
+      const focusedToggle = document.activeElement === menuToggle;
+      setMenuOpen(false);
+      if (event.matches && focusedNavigation) menuToggle.focus();
+      if (!event.matches && focusedToggle) navigation.querySelector("a")?.focus();
+    });
     menuToggle.hidden = false;
     root.dataset.enhanced = "true";
   }
