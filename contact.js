@@ -112,7 +112,7 @@
     const actions = el("div", { class: "contact-actions" });
     const copy = el("button", { type: "button", class: "button button-soft", "data-copy": contact.email }, `${svg("copy")}<span>コピー</span>`);
     actions.append(copy);
-    actions.append(el("a", { class: "button button-primary", href: buildMailto(contact, result.subject) }, `${svg("mail")}件名つきでメール作成`));
+    actions.append(el("a", { class: "button button-primary", href: buildMailto(contact, result.subject) }, `${svg("mail")}メール作成`));
     mail.append(actions);
     card.append(mail);
     bindCopy(copy);

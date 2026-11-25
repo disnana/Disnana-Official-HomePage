@@ -108,7 +108,6 @@
   .compare-list > div { grid-template-columns: 1fr; gap: .25rem; }
   .profile-head { flex-direction: column; align-items: flex-start; }
   .profile-grid { grid-template-columns: 1fr; }
-  .contact-actions .button { flex: 1 1 100%; }
 }
 
 /* Home: About Disnana */
@@ -164,9 +163,9 @@ p, h1, h2, h3, li, dd { word-break: auto-phrase; }
 .address-frame { display: grid; justify-items: center; padding: 1.125rem .75rem; border: 1px solid var(--line); border-radius: .875rem; background: var(--surface-soft); text-align: center; }
 .address-frame .contact-address { max-width: 100%; }
 .address-frame code { padding: 0; background: none; font-size: 1.0625rem; font-weight: 600; overflow-wrap: anywhere; }
-.contact-actions { flex-wrap: nowrap; }
-.contact-actions .button { flex: 1 1 0; min-width: 0; padding-inline: .75rem; white-space: nowrap; }
-@media (max-width: 44rem) { .contact-actions .button { flex: 1 1 0; } }
+.contact-actions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: .625rem; }
+.contact-actions .button { min-width: 0; padding-inline: .75rem; white-space: nowrap; }
+.contact-actions .button[hidden] + .button { grid-column: 1 / -1; }
 
 /* Mobile menu button: two bars centred in the circle, morphing into an exact "x" */
 .icon-button.menu-toggle { position: relative; }

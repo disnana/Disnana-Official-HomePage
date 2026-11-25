@@ -58,7 +58,7 @@ for (const m of members) {
   for (const l of [...(m.links || []), ...(m.projects || [])]) if (l.url && !/^https:\/\//.test(l.url)) fail(`non-https url in ${m.id}: ${l.url}`);
   if (m.publicEmail && /^tp-li@/i.test(m.publicEmail)) fail("personal address must not be published");
 }
-const mailBody = (c) => [...c.template.flatMap((t) => [`【${t}】`, "", ""]), `※${contactData.safetyNotice}`].join("\r\n");
+const mailBody = (c) => [...c.template.flatMap((t) => [`【${t}】`, ""]), `※${contactData.safetyNotice}`].join("\r\n");
 const mailto = (c, subject = c.subject) => `mailto:${c.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody(c))}`;
 const publicMembers = members.filter((m) => m.published);
 
