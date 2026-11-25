@@ -224,13 +224,15 @@ const contactBody = `
       </section>
 
       <section class="container page-section" id="diagnosis" aria-labelledby="diagnosis-title">
-        <div class="section-intro">
-          <p class="eyebrow">Quick guide</p>
-          <h2 class="section-title" id="diagnosis-title">窓口の簡易診断</h2>
-          <p class="section-lead">選択式の質問に答えると、おすすめの窓口を案内します。回答内容は、この端末のブラウザ内だけで処理され、送信・保存されません。</p>
-        </div>
-        <div class="wizard" id="wizard" data-state="idle">
-          <noscript><p class="wizard-fallback">簡易診断にはJavaScriptが必要です。下の<a href="#list">窓口の一覧</a>から直接お問い合わせください。</p></noscript>
+        <div class="split">
+          <div class="section-intro">
+            <p class="eyebrow">Quick guide</p>
+            <h2 class="section-title" id="diagnosis-title">窓口の簡易診断</h2>
+            <p class="section-lead">選択式の質問に答えると、おすすめの窓口を案内します。回答内容は、この端末のブラウザ内だけで処理され、送信・保存されません。</p>
+          </div>
+          <div class="wizard" id="wizard" data-state="idle">
+            <noscript><p class="wizard-fallback">簡易診断にはJavaScriptが必要です。下の<a href="#list">窓口の一覧</a>から直接お問い合わせください。</p></noscript>
+          </div>
         </div>
       </section>
 
@@ -241,6 +243,11 @@ const contactBody = `
           <p class="section-lead">用途ごとに窓口を分けています。内容に近い窓口へご連絡ください。</p>
         </div>
         <div class="contact-grid">${contacts.map(contactCard).join("")}
+          <aside class="contact-card contact-card-hint" aria-labelledby="hint-title">
+            <h3 id="hint-title">どこに送るか迷ったら</h3>
+            <p>簡単な質問に答えて、窓口を調べられます。判断できない場合は総合窓口（${esc(contactById.get(contactData.fallbackContact).email)}）へどうぞ。</p>
+            <a class="button button-soft" href="#diagnosis">窓口を診断する ${icon("arrow")}</a>
+          </aside>
         </div>
         <p class="copy-status visually-hidden" role="status" aria-live="polite" id="copy-status"></p>
       </section>
