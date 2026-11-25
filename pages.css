@@ -132,3 +132,45 @@
 .button-light { background: var(--brand); color: var(--on-brand); }
 .button-ghost { border-color: var(--line); color: var(--text); }
 .button-ghost:hover { background: var(--surface-soft); }
+
+/* Contact layout: wizard fills the width; cards align row by row */
+.split { display: grid; gap: 2rem; }
+.split .section-intro { margin-bottom: 0; }
+.split .wizard-card { max-width: none; }
+@media (min-width: 64rem) {
+  .split { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .split .section-intro { position: sticky; top: calc(var(--header-height) + 2rem); }
+}
+.contact-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+@media (min-width: 40rem) { .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 80rem) { .contact-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* subgrid: header / examples / guidance / address / actions line up across each row */
+@supports (grid-template-rows: subgrid) {
+  .contact-card:not(.contact-card-hint) { grid-row: span 4; grid-template-rows: subgrid; gap: 1rem; }
+}
+.contact-card:not(.contact-card-hint) .contact-mail { align-self: end; }
+.contact-card-hint { grid-row: span 4; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: .75rem; border-style: dashed; box-shadow: none; background: transparent; }
+.contact-card-hint p { color: var(--text-2); font-size: var(--fs-small); }
+
+.wizard-card { scroll-margin-top: calc(var(--header-height) + 1rem); }
+/* Japanese line breaks at phrase boundaries where supported (Chrome/Edge); harmless elsewhere */
+p, h1, h2, h3, li, dd { word-break: auto-phrase; }
+.hero h1 .nb { display: inline-block; }
+.developer-avatar { height: auto; }
+@media (max-width: 44rem) { .hero h1 { font-size: clamp(2rem, 9.5vw, 2.5rem); } }
+
+/* Address frame (centred) + copy / mail on one row */
+.contact-mail { display: grid; gap: .625rem; }
+.address-frame { display: grid; justify-items: center; padding: 1.125rem .75rem; border: 1px solid var(--line); border-radius: .875rem; background: var(--surface-soft); text-align: center; }
+.address-frame .contact-address { max-width: 100%; }
+.address-frame code { padding: 0; background: none; font-size: 1.0625rem; font-weight: 600; overflow-wrap: anywhere; }
+.contact-actions { flex-wrap: nowrap; }
+.contact-actions .button { flex: 1 1 0; min-width: 0; padding-inline: .75rem; white-space: nowrap; }
+@media (max-width: 44rem) { .contact-actions .button { flex: 1 1 0; } }
+
+/* Mobile menu button: two bars centred in the circle, morphing into an exact "x" */
+.icon-button.menu-toggle { position: relative; }
+.icon-button.menu-toggle span { position: absolute; left: 50%; top: 50%; width: 1.125rem; height: 2px; margin: 0; border-radius: 2px; background: currentColor; transform: translate(-50%, -50%) translateY(-3.5px); transition: transform .2s ease; }
+.icon-button.menu-toggle span:last-child { transform: translate(-50%, -50%) translateY(3.5px); }
+.icon-button.menu-toggle[aria-expanded="true"] span:first-child { transform: translate(-50%, -50%) rotate(45deg); }
+.icon-button.menu-toggle[aria-expanded="true"] span:last-child { transform: translate(-50%, -50%) rotate(-45deg); }
