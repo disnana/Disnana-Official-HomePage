@@ -1,0 +1,72 @@
+{
+  "_comment": "公式メンバー情報の一元管理ファイル。メンバーの追加・更新はここを編集し、`node scripts/build.mjs` を実行してください。未確認の役職・個人情報・SNSは記載しないこと。publicEmail は showEmail が true のときだけ公開されます。",
+  "members": [
+    {
+      "id": "tp-li",
+      "published": true,
+      "status": "active",
+      "displayName": "tp-li",
+      "realName": null,
+      "showRealName": false,
+      "role": "Disnana創設者・開発者",
+      "areas": [
+        "Pythonを中心とした開発",
+        "Botの開発・運用",
+        "データベース",
+        "インフラ",
+        "認証・データ保護を意識した設計"
+      ],
+      "bio": "Disnanaの創設者・開発者。バックエンドと、その周りの道具を作っています。Pythonを中心に、Bot、データベース、インフラを開発・運用し、認証やデータの保護など、セキュリティを意識した設計にも取り組んでいます。",
+      "avatar": "/assets/tp-avatar-soft.png",
+      "avatarAlt": "tp-liのプロフィール画像",
+      "links": [
+        {
+          "label": "tp-li.com（プロフィールと開発実績）",
+          "url": "https://tp-li.com"
+        },
+        {
+          "label": "GitHub（tp-li-dev）",
+          "url": "https://github.com/tp-li-dev"
+        },
+        {
+          "label": "X（@PythonHaru）",
+          "url": "https://x.com/PythonHaru"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Disnana Bot",
+          "url": "https://bot.disnana.com/",
+          "description": "Discordのコミュニティ運営を支えるBot"
+        },
+        {
+          "name": "Nagi",
+          "url": "https://nagi.disnana.com/",
+          "description": "Python風に書けて、Rustにつながるバックエンド向け言語"
+        },
+        {
+          "name": "NanaSQLite",
+          "url": "https://github.com/disnana/NanaSQLite",
+          "description": "dictのように書くだけでSQLiteに保存できるPythonライブラリ"
+        },
+        {
+          "name": "DisnanaSASPAM",
+          "url": "https://github.com/disnana/DisnanaSASPAM",
+          "description": "SSHログイン後にDiscordで追加承認を求めるPAMゲート"
+        },
+        {
+          "name": "NyanSQLite",
+          "url": "https://github.com/disnana/NyanSQLite",
+          "description": "Pydantic・Django風クエリ・FTS5でSQLiteを扱うライブラリ"
+        },
+        {
+          "name": "niltest",
+          "url": "https://niltest.disnana.com/docs/en/",
+          "description": "関数のそばに代表ケースを書くテストツール"
+        }
+      ],
+      "showEmail": false,
+      "publicEmail": null
+    }
+  ]
+}

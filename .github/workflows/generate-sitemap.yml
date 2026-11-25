@@ -24,9 +24,12 @@ jobs:
         echo '<?xml version="1.0" encoding="UTF-8"?>' > $SITEMAP
         echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> $SITEMAP
 
-        find . -maxdepth 1 -type f -name '*.html' | while read -r file; do
-          # 拡張子 .html を取り除いたファイル名を取得
-          filename=$(basename "$file" .html)
+        find . -maxdepth 2 -type f -name '*.html' ! -name '404.html' | sort | while read -r file; do
+          # ./member/tp-li.html -> member/tp-li （拡張子 .html を取り除く）
+          # 移転用リダイレクトページはsitemapに含めない
+          if grep -q 'http-equiv="refresh"' "$file"; then continue; fi
+          filename="${file#./}"
+          filename="${filename%.html}"
           
           # indexの場合はURLをドメイン直下（/）にし、それ以外はファイル名にする
           if [ "$filename" = "index" ]; then

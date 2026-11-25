@@ -258,7 +258,7 @@ details[open] .faq-plus::after { transform: rotate(0); }
 .footer-brand { font-size: 1.75rem; font-weight: 800; letter-spacing: -.02em; }
 .footer-brand span { color: var(--brand); }
 .footer-about p { margin-top: .5rem; color: var(--muted); font-size: var(--fs-small); }
-.footer-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.footer-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
 .footer-nav div { display: grid; gap: .625rem; align-content: start; justify-items: start; }
 .footer-nav h2 { margin-bottom: .25rem; font-size: var(--fs-label); letter-spacing: .12em; color: var(--muted); }
 .footer-nav a { font-size: var(--fs-small); font-weight: 500; color: var(--text-2); transition: color .2s; }
