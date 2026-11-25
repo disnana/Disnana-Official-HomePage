@@ -55,7 +55,19 @@
   let path = []; // [{ nodeId, label }]
   let current = data.start;
 
-  const focusHeading = () => wizard.querySelector("[data-focus]")?.focus();
+  // Move focus to the new heading without letting the browser scroll, then scroll only when
+  // the card's top is out of view, so the page stays put while answering on small screens.
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  const focusHeading = () => {
+    wizard.querySelector("[data-focus]")?.focus({ preventScroll: true });
+    const card = wizard.querySelector(".wizard-card");
+    if (!card) return;
+    const top = card.getBoundingClientRect().top;
+    const headerHeight = document.querySelector(".site-header")?.offsetHeight || 0;
+    if (top < headerHeight || top > window.innerHeight * 0.7) {
+      card.scrollIntoView({ block: "start", behavior: reduceMotion.matches ? "auto" : "smooth" });
+    }
+  };
 
   const renderQuestion = () => {
     const node = data.nodes[current];
