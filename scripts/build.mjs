@@ -138,7 +138,7 @@ const footer = `<footer class="site-footer">
       </div>
     </footer>`;
 
-const page = ({ path, title, description, current, body, scripts = "", ogType = "website", ogImage = `${ORIGIN}/assets/og-image.png`, twitterCard = "summary_large_image", noindex = false, extraHead = "" }) => `<!doctype html>
+const page = ({ path, title, description, current, body, scripts = "", ogType = "website", ogImage = `${ORIGIN}/assets/og/home.png`, twitterCard = "summary_large_image", noindex = false, extraHead = "" }) => `<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -274,6 +274,7 @@ const contactBody = `
 write("contact.html", page({
   path: "/contact",
   title: "お問い合わせ｜Disnana",
+  ogImage: `${ORIGIN}/assets/og/contact.png`,
   description: "Disnanaのお問い合わせ窓口の一覧です。サポート、法務、個人情報、セキュリティ、請求などの窓口を用途別にご案内し、簡単な質問で適切な窓口を診断できます。",
   current: "contact",
   body: contactBody,
@@ -326,6 +327,7 @@ const membersBody = `
 write("members.html", page({
   path: "/members",
   title: "公式メンバー｜Disnana",
+  ogImage: `${ORIGIN}/assets/og/members.png`,
   description: "Disnanaの公式メンバー一覧です。運営・開発に関わるメンバーの役職、担当領域、プロフィールをご紹介します。",
   current: "members",
   body: membersBody,
@@ -399,8 +401,7 @@ for (const m of publicMembers) {
     current: "members",
     body: memberBody(m),
     ogType: "profile",
-    ogImage: m.avatar ? ORIGIN + m.avatar : `${ORIGIN}/assets/og-image.png`,
-    twitterCard: m.avatar ? "summary" : "summary_large_image",
+    ogImage: `${ORIGIN}/assets/og/member-${m.id}.png`,
     extraHead: memberJsonLd(m),
   }));
 }
