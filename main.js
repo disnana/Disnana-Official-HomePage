@@ -89,7 +89,7 @@
 
   // Fade sections in as they enter the viewport (skipped for reduced motion or without IntersectionObserver).
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const groups = [".service-links", ".section-intro", ".feature-item", ".section-heading", ".project-row", ".developer-card", ".support-intro", ".faq-list", ".cta-band"];
+    const groups = [".service-links", ".section-intro", ".about-item", ".feature-item", ".section-heading", ".project-row", ".developer-card", ".support-intro", ".faq-list", ".cta-band"];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;

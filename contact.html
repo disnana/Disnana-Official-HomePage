@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Disnanaのお問い合わせ窓口の一覧です。サポート、法務、個人情報、セキュリティ、請求などの窓口を用途別にご案内し、簡単な質問で適切な窓口を診断できます。" />
+    <meta name="theme-color" content="#f8f9fc" />
+    
+    <title>お問い合わせ｜Disnana</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="https://disnana.com/contact" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="Disnana" />
+    <meta property="og:title" content="お問い合わせ｜Disnana" />
+    <meta property="og:description" content="Disnanaのお問い合わせ窓口の一覧です。サポート、法務、個人情報、セキュリティ、請求などの窓口を用途別にご案内し、簡単な質問で適切な窓口を診断できます。" />
+    <meta property="og:url" content="https://disnana.com/contact" />
+    <meta property="og:image" content="https://disnana.com/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="お問い合わせ｜Disnana" />
+    <meta name="twitter:description" content="Disnanaのお問い合わせ窓口の一覧です。サポート、法務、個人情報、セキュリティ、請求などの窓口を用途別にご案内し、簡単な質問で適切な窓口を診断できます。" />
+    <meta name="twitter:image" content="https://disnana.com/assets/og-image.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      (() => {
+        let theme;
+        try {
+          const stored = localStorage.getItem("disnana-theme");
+          if (stored === "light" || stored === "dark") theme = stored;
+        } catch {}
+        theme ||= matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#0d1422" : "#f8f9fc";
+      })();
+    </script>
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" href="/pages.css" />
+    
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">本文へスキップ</a>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12" /></symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z" /><path d="m8.5 12 2.5 2.5 4.5-5" /></symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></symbol>
+      <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V6a2 2 0 0 1 2-2h8" /></symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></symbol>
+      <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z" /></symbol>
+    </svg>
+    <header class="site-header">
+      <div class="header-inner container">
+        <a class="brand" href="/" aria-label="Disnana ホーム">
+          <span class="brand-mark">
+            <img class="brand-mark-light" src="/assets/disnana-icon-light.png" width="40" height="40" alt="" />
+            <img class="brand-mark-dark" src="/assets/disnana-icon-dark-cropped.png" width="40" height="40" alt="" />
+          </span>
+          <span>Disnana<span class="brand-caption">OFFICIAL</span></span>
+        </a>
+        <nav class="site-nav" id="site-navigation" aria-label="メインナビゲーション">
+          <a href="/#about">Disnanaについて</a>
+          <a href="/#projects">プロジェクト</a>
+          <a href="/members">メンバー</a>
+          <a href="/contact" aria-current="page">お問い合わせ</a>
+        </nav>
+        <div class="header-actions">
+          <button class="theme-toggle icon-button" type="button" aria-label="ダークモード" aria-pressed="false" hidden>
+            <svg class="icon theme-icon-light" aria-hidden="true"><use href="#icon-moon" /></svg>
+            <svg class="icon theme-icon-dark" aria-hidden="true"><use href="#icon-sun" /></svg>
+          </button>
+          <a class="header-cta" href="https://dashboard.disnana.com" target="_blank" rel="noopener noreferrer">ダッシュボード <svg class="icon" aria-hidden="true"><use href="#icon-external" /></svg></a>
+          <button class="menu-toggle icon-button" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="site-navigation" hidden><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+
+      <section class="page-hero container" aria-labelledby="page-title">
+        <p class="eyebrow">Contact</p>
+        <h1 id="page-title">お問い合わせ</h1>
+        <p class="page-lead">ご用件に合わせた窓口をご用意しています。どこに連絡すればよいか迷うときは、簡単な質問に答えて窓口を調べることもできます。診断を使わず、一覧から直接メールすることも可能です。</p>
+        <ul class="page-anchors">
+          <li><a class="text-link" href="#diagnosis">窓口を診断する <svg class="icon" aria-hidden="true"><use href="#icon-arrow" /></svg></a></li>
+          <li><a class="text-link" href="#list">窓口の一覧を見る <svg class="icon" aria-hidden="true"><use href="#icon-arrow" /></svg></a></li>
+        </ul>
+      </section>
+
+      <section class="container notice-section" aria-labelledby="notice-title">
+        <div class="notice" role="note">
+          <svg class="icon" aria-hidden="true"><use href="#icon-shield" /></svg>
+          <div>
+            <h2 id="notice-title">メールを送る前に</h2>
+            <p>パスワード、認証コード（ワンタイムパスワード等）、クレジットカード番号、Botトークンなどの秘密情報は、メールに記載しないでください。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page-section" id="diagnosis" aria-labelledby="diagnosis-title">
+        <div class="section-intro">
+          <p class="eyebrow">Quick guide</p>
+          <h2 class="section-title" id="diagnosis-title">窓口の簡易診断</h2>
+          <p class="section-lead">選択式の質問に答えると、おすすめの窓口を案内します。回答内容は、この端末のブラウザ内だけで処理され、送信・保存されません。</p>
+        </div>
+        <div class="wizard" id="wizard" data-state="idle">
+          <noscript><p class="wizard-fallback">簡易診断にはJavaScriptが必要です。下の<a href="#list">窓口の一覧</a>から直接お問い合わせください。</p></noscript>
+        </div>
+      </section>
+
+      <section class="container page-section" id="list" aria-labelledby="list-title" tabindex="-1">
+        <div class="section-intro">
+          <p class="eyebrow">All contacts</p>
+          <h2 class="section-title" id="list-title">お問い合わせ先一覧</h2>
+          <p class="section-lead">用途ごとに窓口を分けています。内容に近い窓口へご連絡ください。</p>
+        </div>
+        <div class="contact-grid">
+          <article class="contact-card" id="contact-support" aria-labelledby="contact-support-title" data-contact="support">
+            <header class="contact-card-head">
+              <h3 id="contact-support-title">サポート</h3>
+              <p class="contact-purpose">利用方法、不具合、機能改善要望</p>
+            </header>
+            <ul class="contact-examples"><li>コマンドや設定の使い方が分からない</li><li>Botが反応しない・動作がおかしい</li><li>こんな機能がほしいという要望</li></ul>
+            <p class="contact-choose">Botやサービスの「使い方・不具合・要望」はこちら。請求は billing、規約や権利は legal、脆弱性は security へ。</p>
+            <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>support@disnana.com</code></p>
+            <div class="contact-actions">
+              <button class="button button-soft" type="button" data-copy="support@disnana.com" hidden><svg class="icon" aria-hidden="true"><use href="#icon-copy" /></svg><span>アドレスをコピー</span><span class="visually-hidden"> (サポート)</span></button>
+              <a class="button button-primary" href="mailto:support@disnana.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail" /></svg>メールを作成<span class="visually-hidden"> (サポート)</span></a>
+            </div>
+          </article>
+          <article class="contact-card" id="contact-info" aria-labelledby="contact-info-title" data-contact="info">
+            <header class="contact-card-head">
+              <h3 id="contact-info-title">総合窓口</h3>
+              <p class="contact-purpose">一般問い合わせ、企業間取引、その他</p>
+            </header>
+            <ul class="contact-examples"><li>提携・協業・取材のご相談</li><li>法人としての取引に関するご相談</li><li>どの窓口か分からない内容</li></ul>
+            <p class="contact-choose">他のどの窓口にも当てはまらない場合や、判断に迷う場合はこちら。内容に応じて適切な窓口をご案内します。</p>
+            <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>info@disnana.com</code></p>
+            <div class="contact-actions">
+              <button class="button button-soft" type="button" data-copy="info@disnana.com" hidden><svg class="icon" aria-hidden="true"><use href="#icon-copy" /></svg><span>アドレスをコピー</span><span class="visually-hidden"> (総合窓口)</span></button>
+              <a class="button button-primary" href="mailto:info@disnana.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail" /></svg>メールを作成<span class="visually-hidden"> (総合窓口)</span></a>
+            </div>
+          </article>
+          <article class="contact-card" id="contact-legal" aria-labelledby="contact-legal-title" data-contact="legal">
+            <header class="contact-card-head">
+              <h3 id="contact-legal-title">法務</h3>
+              <p class="contact-purpose">法務、契約、利用規約、著作権、権利侵害</p>
+            </header>
+            <ul class="contact-examples"><li>利用規約や契約内容についての確認</li><li>著作権・商標などの権利侵害の申告</li><li>法的な書面・連絡に関するご相談</li></ul>
+            <p class="contact-choose">規約・契約・権利に関する内容はこちら。個人情報の請求は privacy、販売条件の表記は tokuho、料金の請求は billing へ。</p>
+            <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>legal@disnana.com</code></p>
+            <div class="contact-actions">
+              <button class="button button-soft" type="button" data-copy="legal@disnana.com" hidden><svg class="icon" aria-hidden="true"><use href="#icon-copy" /></svg><span>アドレスをコピー</span><span class="visually-hidden"> (法務)</span></button>
+              <a class="button button-primary" href="mailto:legal@disnana.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail" /></svg>メールを作成<span class="visually-hidden"> (法務)</span></a>
+            </div>
+          </article>
+          <article class="contact-card" id="contact-privacy" aria-labelledby="contact-privacy-title" data-contact="privacy">
+            <header class="contact-card-head">
+              <h3 id="contact-privacy-title">個人情報</h3>
+              <p class="contact-purpose">個人情報保護、開示・訂正・削除請求</p>
+            </header>
+            <ul class="contact-examples"><li>保有個人データの開示・訂正・削除の請求</li><li>個人情報の取り扱いに関する質問</li><li>利用目的や第三者提供についての確認</li></ul>
+            <p class="contact-choose">個人情報の取り扱い・各種請求はこちら。情報漏えいの恐れや不正アクセスなど「安全性の問題」は security へ。</p>
+            <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>privacy@disnana.com</code></p>
+            <div class="contact-actions">
+              <button class="button button-soft" type="button" data-copy="privacy@disnana.com" hidden><svg class="icon" aria-hidden="true"><use href="#icon-copy" /></svg><span>アドレスをコピー</span><span class="visually-hidden"> (個人情報)</span></button>
+              <a class="button button-primary" href="mailto:privacy@disnana.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail" /></svg>メールを作成<span class="visually-hidden"> (個人情報)</span></a>
+            </div>
+          </article>
+          <article class="contact-card" id="contact-security" aria-labelledby="contact-security-title" data-contact="security">
+            <header class="contact-card-head">
+              <h3 id="contact-security-title">セキュリティ</h3>
+              <p class="contact-purpose">脆弱性、セキュリティ上の問題の報告</p>
+            </header>
+            <ul class="contact-examples"><li>脆弱性を発見した</li><li>情報漏えいの恐れや不正アクセスの疑いがある</li><li>Disnanaを装った不審な連絡を見つけた</li></ul>
+            <p class="contact-choose">安全性に関わる報告はこちら。通常の不具合は support、個人情報の請求は privacy へ。</p>
+            <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>security@disnana.com</code></p>
+            <div class="contact-actions">
+              <button class="button button-soft" type="button" data-copy="security@disnana.com" hidden><svg class="icon" aria-hidden="true"><use href="#icon-copy" /></svg><span>アドレスをコピー</span><span class="visually-hidden"> (セキュリティ)</span></button>
+              <a class="button button-primary" href="mailto:security@disnana.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail" /></svg>メールを作成<span class="visually-hidden"> (セキュリティ)</span></a>
+            </div>
+          </article>
+          <article class="contact-card" id="contact-billing" aria-labelledby="contact-billing-title" data-contact="billing">
+            <header class="contact-card-head">
+              <h3 id="contact-billing-title">請求・決済</h3>
+              <p class="contact-purpose">請求、決済、返金</p>
+            </header>
+            <ul class="contact-examples"><li>請求内容や決済状況の確認</li><li>二重請求・決済エラー</li><li>返金に関するご相談</li></ul>
+            <p class="contact-choose">料金の支払い・請求・返金に関する内容はこちら。販売条件や法定表示は tokuho、契約内容の解釈は legal へ。</p>
+            <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>billing@disnana.com</code></p>
+            <div class="contact-actions">
+              <button class="button button-soft" type="button" data-copy="billing@disnana.com" hidden><svg class="icon" aria-hidden="true"><use href="#icon-copy" /></svg><span>アドレスをコピー</span><span class="visually-hidden"> (請求・決済)</span></button>
+              <a class="button button-primary" href="mailto:billing@disnana.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail" /></svg>メールを作成<span class="visually-hidden"> (請求・決済)</span></a>
+            </div>
+          </article>
+          <article class="contact-card" id="contact-tokuho" aria-labelledby="contact-tokuho-title" data-contact="tokuho">
+            <header class="contact-card-head">
+              <h3 id="contact-tokuho-title">特定商取引法</h3>
+              <p class="contact-purpose">特定商取引法、販売条件、法定表示</p>
+            </header>
+            <ul class="contact-examples"><li>特定商取引法に基づく表記についての質問</li><li>販売条件・提供条件の確認</li><li>法定表示に関するお問い合わせ</li></ul>
+            <p class="contact-choose">特定商取引法に基づく表記・販売条件に関する内容はこちら。支払い・返金の個別対応は billing へ。</p>
+            <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>tokuho@disnana.com</code></p>
+            <div class="contact-actions">
+              <button class="button button-soft" type="button" data-copy="tokuho@disnana.com" hidden><svg class="icon" aria-hidden="true"><use href="#icon-copy" /></svg><span>アドレスをコピー</span><span class="visually-hidden"> (特定商取引法)</span></button>
+              <a class="button button-primary" href="mailto:tokuho@disnana.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail" /></svg>メールを作成<span class="visually-hidden"> (特定商取引法)</span></a>
+            </div>
+          </article>
+        </div>
+        <p class="copy-status visually-hidden" role="status" aria-live="polite" id="copy-status"></p>
+      </section>
+
+      <section class="container page-section" id="compare" aria-labelledby="compare-title">
+        <div class="section-intro">
+          <p class="eyebrow">Which one?</p>
+          <h2 class="section-title" id="compare-title">用途が近い窓口の選び方</h2>
+        </div>
+        <dl class="compare-list">
+          <div><dt>support と info</dt><dd>Botやサービスの使い方・不具合は support、法人取引や提携などそれ以外の一般的な相談は info へ。</dd></div>
+          <div><dt>billing・tokuho・legal</dt><dd>実際の請求・決済・返金は billing、特定商取引法に基づく表記や販売条件は tokuho、規約・契約・権利に関する内容は legal へ。</dd></div>
+          <div><dt>privacy と security</dt><dd>個人情報の開示・訂正・削除などの請求や取り扱いの質問は privacy、脆弱性や漏えいの恐れなど安全性の問題は security へ。</dd></div>
+        </dl>
+        <p class="page-note">どの窓口か判断できない場合は、総合窓口（info@disnana.com）へご連絡ください。</p>
+        <p class="page-note">メンバーの一覧は<a class="inline-link" href="/members">公式メンバー</a>のページでご確認いただけます。お問い合わせは、メンバー個人ではなく上記の窓口へお願いします。</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-about">
+            <a class="footer-brand" href="/">Disnana<span>.</span></a>
+            <p>コミュニティと、つくる人のそばに。</p>
+          </div>
+          <nav class="footer-nav" aria-label="フッターナビゲーション">
+            <div><h2>Disnana</h2><a href="/#about">Disnanaについて</a><a href="/members">メンバー</a><a href="/#projects">プロジェクト</a></div>
+            <div><h2>サービス</h2><a href="https://bot.disnana.com/">Bot公式サイト</a><a href="https://dashboard.disnana.com" target="_blank" rel="noopener noreferrer">ダッシュボード</a><a href="https://status.disnana.com" target="_blank" rel="noopener noreferrer">稼働状況</a></div>
+            <div><h2>サポート</h2><a href="/contact">お問い合わせ</a><a href="https://tos.disnana.com" target="_blank" rel="noopener noreferrer">利用規約</a><a href="https://privacypolicy.disnana.com" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a></div>
+          </nav>
+        </div>
+        <div class="footer-bottom"><span>© <span data-current-year>2026</span> Disnana</span><a class="back-top" href="#top">ページの先頭へ <span aria-hidden="true">↑</span></a></div>
+      </div>
+    </footer>
+    <script src="/main.js"></script>
+    <script type="application/json" id="contact-data">{"contacts":{"support":{"email":"support@disnana.com","name":"サポート","purpose":"利用方法、不具合、機能改善要望","tips":["利用しているサービス・機能名（コマンド名など）","起きたことと、期待していた動作","発生した日時","サーバー名またはサーバーID（Discordの場合）","エラーメッセージや画面のスクリーンショット"]},"info":{"email":"info@disnana.com","name":"総合窓口","purpose":"一般問い合わせ、企業間取引、その他","tips":["組織名・お名前（法人の場合）","ご相談の目的と概要","関連するURLや資料（あれば）"]},"legal":{"email":"legal@disnana.com","name":"法務","purpose":"法務、契約、利用規約、著作権、権利侵害","tips":["対象となる規約・契約・サービスの名称","権利侵害の場合：権利者情報、侵害されているコンテンツと該当URL","確認したい点や求める対応"]},"privacy":{"email":"privacy@disnana.com","name":"個人情報","purpose":"個人情報保護、開示・訂正・削除請求","tips":["請求の種類（開示・訂正・削除・利用停止など）","対象のサービスと、請求者が特定できる情報（例：DiscordのユーザーID）","対象とするデータの範囲"]},"security":{"email":"security@disnana.com","name":"セキュリティ","purpose":"脆弱性、セキュリティ上の問題の報告","tips":["対象のサービス・URL・バージョン","再現手順と影響範囲","確認した日時","公開前の詳細は、本窓口以外に公開しないでください"]},"billing":{"email":"billing@disnana.com","name":"請求・決済","purpose":"請求、決済、返金","tips":["ご利用のプラン・サービス名","決済日と金額、決済方法の種類","取引番号・注文番号（あれば）","カード番号の全桁や認証コードは記載しないでください"]},"tokuho":{"email":"tokuho@disnana.com","name":"特定商取引法","purpose":"特定商取引法、販売条件、法定表示","tips":["対象のサービス・プラン名","確認したい表記や条件の箇所（ページURLなど）"]}},"fallback":"info","safety":"パスワード、認証コード（ワンタイムパスワード等）、クレジットカード番号、Botトークンなどの秘密情報は、メールに記載しないでください。","start":"root","nodes":{"root":{"question":"どのようなご用件ですか？","options":[{"label":"サービスの利用や不具合について","next":"usage"},{"label":"お支払い・返金・契約について","next":"payment"},{"label":"個人情報の取り扱いについて","next":"privacy"},{"label":"脆弱性やセキュリティについて","next":"security"},{"label":"法務・著作権・権利関係について","next":"legal"},{"label":"企業間取引・その他","next":"business"},{"label":"どれに当てはまるか分からない","result":{"contact":"info","subject":"【お問い合わせ】","reason":"内容を判断できない場合は、総合窓口で内容を確認し、適切な窓口をご案内します。"}}]},"usage":{"question":"具体的にはどのような内容ですか？","options":[{"label":"使い方・設定方法が分からない","result":{"contact":"support","subject":"【使い方の質問】","reason":"サービスの利用方法に関するご質問は、サポート窓口が担当します。"}},{"label":"不具合・エラーが起きている","result":{"contact":"support","subject":"【不具合の報告】","reason":"動作の不具合やエラーは、サポート窓口で状況を確認します。"}},{"label":"機能の追加・改善を要望したい","result":{"contact":"support","subject":"【機能改善の要望】","reason":"機能改善のご要望は、サポート窓口で受け付けています。"}},{"label":"不具合が脆弱性やセキュリティ上の問題かもしれない","next":"security"}]},"payment":{"question":"具体的にはどのような内容ですか？","options":[{"label":"請求内容・決済状況を確認したい／決済エラー","result":{"contact":"billing","subject":"【請求・決済の問い合わせ】","reason":"請求や決済に関するご相談は、請求・決済窓口が担当します。"}},{"label":"返金を相談したい","result":{"contact":"billing","subject":"【返金の相談】","reason":"返金に関するご相談は、請求・決済窓口が担当します。"}},{"label":"契約内容・利用規約を確認したい","result":{"contact":"legal","subject":"【契約・利用規約の問い合わせ】","reason":"契約や利用規約の内容に関するご質問は、法務窓口が担当します。"}},{"label":"特定商取引法に基づく表記・販売条件を確認したい","result":{"contact":"tokuho","subject":"【特定商取引法・販売条件の問い合わせ】","reason":"特定商取引法に基づく表記や販売条件に関するご質問は、専用窓口が担当します。"}}]},"privacy":{"question":"具体的にはどのような内容ですか？","options":[{"label":"保有個人データの開示・訂正・削除などを請求したい","result":{"contact":"privacy","subject":"【個人情報に関する請求】","reason":"開示・訂正・削除などの請求は、個人情報窓口が担当します。"}},{"label":"個人情報の取り扱い・利用目的について質問したい","result":{"contact":"privacy","subject":"【個人情報の取り扱いに関する質問】","reason":"個人情報の取り扱いに関するご質問は、個人情報窓口が担当します。"}},{"label":"情報漏えいの恐れや不正アクセスの疑いがある","next":"security"}]},"security":{"question":"具体的にはどのような内容ですか？","options":[{"label":"脆弱性を発見した","result":{"contact":"security","subject":"【脆弱性の報告】","reason":"脆弱性の報告は、セキュリティ窓口が担当します。詳細は本窓口以外に公開しないようご配慮ください。"}},{"label":"情報漏えいの恐れ・不正アクセスの疑いがある","result":{"contact":"security","subject":"【セキュリティ上の問題の報告】","reason":"安全性に関わる問題は、セキュリティ窓口が担当します。"}},{"label":"Disnanaを装った不審な連絡を受けた","result":{"contact":"security","subject":"【不審な連絡の報告】","reason":"なりすましや不審な連絡の報告は、セキュリティ窓口が担当します。"}}]},"legal":{"question":"具体的にはどのような内容ですか？","options":[{"label":"利用規約・契約内容を確認したい","result":{"contact":"legal","subject":"【利用規約・契約の問い合わせ】","reason":"利用規約や契約に関するご質問は、法務窓口が担当します。"}},{"label":"著作権・商標などの権利侵害を申告したい","result":{"contact":"legal","subject":"【権利侵害の申告】","reason":"権利侵害の申告は、法務窓口が担当します。"}},{"label":"法的な書面や連絡について相談したい","result":{"contact":"legal","subject":"【法的な連絡・書面について】","reason":"法的な連絡や書面に関するご相談は、法務窓口が担当します。"}},{"label":"個人情報の開示・削除などを請求したい","next":"privacy"}]},"business":{"question":"具体的にはどのような内容ですか？","options":[{"label":"企業間取引・提携・協業を相談したい","result":{"contact":"info","subject":"【企業間取引・提携のご相談】","reason":"法人としてのお取引や提携のご相談は、総合窓口が担当します。"}},{"label":"取材・その他の一般的な問い合わせ","result":{"contact":"info","subject":"【お問い合わせ】","reason":"一般的なお問い合わせは、総合窓口が担当します。"}}]}}}</script>
+    <script src="/contact.js"></script>
+  </body>
+</html>
