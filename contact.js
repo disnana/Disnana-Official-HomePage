@@ -108,7 +108,7 @@
     card.append(el("h3", { class: "wizard-question", tabindex: "-1", "data-focus": "" }, `おすすめの窓口: ${esc(contact.name)}`));
     card.append(el("p", { class: "wizard-reason" }, esc(result.reason)));
     const mail = el("div", { class: "contact-mail" });
-    mail.append(el("div", { class: "address-frame" }, `<p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>${esc(contact.email)}</code></p><p class="address-subject">件名: ${esc(result.subject)}</p>`));
+    mail.append(el("div", { class: "address-frame" }, `<p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>${esc(contact.email)}</code></p>`));
     const actions = el("div", { class: "contact-actions" });
     const copy = el("button", { type: "button", class: "button button-soft", "data-copy": contact.email }, `${svg("copy")}<span>コピー</span>`);
     actions.append(copy);

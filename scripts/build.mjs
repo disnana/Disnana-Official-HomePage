@@ -192,7 +192,6 @@ const contactCard = (c) => `
             <div class="contact-mail">
               <div class="address-frame">
                 <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>${esc(c.email)}</code></p>
-                <p class="address-subject">件名: ${esc(c.subject)}</p>
               </div>
               <div class="contact-actions">
                 <button class="button button-soft" type="button" data-copy="${esc(c.email)}" hidden>${icon("copy")}<span>コピー</span><span class="visually-hidden"> (${esc(c.name)}のアドレス)</span></button>
