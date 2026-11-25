@@ -146,10 +146,10 @@
 @media (min-width: 80rem) { .contact-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 /* subgrid: header / examples / guidance / address / actions line up across each row */
 @supports (grid-template-rows: subgrid) {
-  .contact-card:not(.contact-card-hint) { grid-row: span 5; grid-template-rows: subgrid; gap: 1rem; }
+  .contact-card:not(.contact-card-hint) { grid-row: span 4; grid-template-rows: subgrid; gap: 1rem; }
 }
-.contact-card:not(.contact-card-hint) .contact-actions { align-self: end; }
-.contact-card-hint { grid-row: span 5; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: .75rem; border-style: dashed; box-shadow: none; background: transparent; }
+.contact-card:not(.contact-card-hint) .contact-mail { align-self: end; }
+.contact-card-hint { grid-row: span 4; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: .75rem; border-style: dashed; box-shadow: none; background: transparent; }
 .contact-card-hint p { color: var(--text-2); font-size: var(--fs-small); }
 
 .wizard-card { scroll-margin-top: calc(var(--header-height) + 1rem); }
@@ -158,3 +158,13 @@ p, h1, h2, h3, li, dd { word-break: auto-phrase; }
 .hero h1 .nb { display: inline-block; }
 .developer-avatar { height: auto; }
 @media (max-width: 44rem) { .hero h1 { font-size: clamp(2rem, 9.5vw, 2.5rem); } }
+
+/* Address frame (centred) + copy / mail on one row */
+.contact-mail { display: grid; gap: .625rem; }
+.address-frame { display: grid; justify-items: center; gap: .25rem; padding: 1rem .75rem; border: 1px solid var(--line); border-radius: .875rem; background: var(--surface-soft); text-align: center; }
+.address-frame .contact-address { max-width: 100%; }
+.address-frame code { padding: 0; background: none; font-size: 1.0625rem; font-weight: 600; overflow-wrap: anywhere; }
+.address-subject { font-size: var(--fs-label); color: var(--muted); overflow-wrap: anywhere; }
+.contact-actions { flex-wrap: nowrap; }
+.contact-actions .button { flex: 1 1 0; min-width: 0; padding-inline: .75rem; white-space: nowrap; }
+@media (max-width: 44rem) { .contact-actions .button { flex: 1 1 0; } }

@@ -28,6 +28,7 @@ if (contactById.size !== contacts.length) fail("duplicate contact id");
 for (const c of contacts) {
   if (!/^[a-z0-9._+-]+@disnana\.com$/.test(c.email)) fail(`invalid contact email: ${c.email}`);
   if (/^tp-li@/i.test(c.email)) fail("personal address must not be published");
+  if (!c.subject || !Array.isArray(c.template) || !c.template.length) fail(`contact needs subject/template: ${c.id}`);
 }
 if (!contactById.has(contactData.fallbackContact)) fail("fallbackContact missing");
 
@@ -57,6 +58,8 @@ for (const m of members) {
   for (const l of [...(m.links || []), ...(m.projects || [])]) if (l.url && !/^https:\/\//.test(l.url)) fail(`non-https url in ${m.id}: ${l.url}`);
   if (m.publicEmail && /^tp-li@/i.test(m.publicEmail)) fail("personal address must not be published");
 }
+const mailBody = (c) => [...c.template.flatMap((t) => [`【${t}】`, "", ""]), `※${contactData.safetyNotice}`].join("\r\n");
+const mailto = (c, subject = c.subject) => `mailto:${c.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody(c))}`;
 const publicMembers = members.filter((m) => m.published);
 
 /* ---------------- shared shell ---------------- */
@@ -186,15 +189,20 @@ const contactCard = (c) => `
             </header>
             <ul class="contact-examples">${c.examples.map((e) => `<li>${esc(e)}</li>`).join("")}</ul>
             <p class="contact-choose">${esc(c.choose)}</p>
-            <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>${esc(c.email)}</code></p>
-            <div class="contact-actions">
-              <button class="button button-soft" type="button" data-copy="${esc(c.email)}" hidden>${icon("copy")}<span>アドレスをコピー</span><span class="visually-hidden"> (${esc(c.name)})</span></button>
-              <a class="button button-primary" href="mailto:${esc(c.email)}">${icon("mail")}メールを作成<span class="visually-hidden"> (${esc(c.name)})</span></a>
+            <div class="contact-mail">
+              <div class="address-frame">
+                <p class="contact-address"><span class="visually-hidden">メールアドレス: </span><code>${esc(c.email)}</code></p>
+                <p class="address-subject">件名: ${esc(c.subject)}</p>
+              </div>
+              <div class="contact-actions">
+                <button class="button button-soft" type="button" data-copy="${esc(c.email)}" hidden>${icon("copy")}<span>コピー</span><span class="visually-hidden"> (${esc(c.name)}のアドレス)</span></button>
+                <a class="button button-primary" href="${esc(mailto(c))}">${icon("mail")}メール作成<span class="visually-hidden"> (${esc(c.name)})</span></a>
+              </div>
             </div>
           </article>`;
 
 const clientData = {
-  contacts: Object.fromEntries(contacts.map((c) => [c.id, { email: c.email, name: c.name, purpose: c.purpose, tips: c.tips }])),
+  contacts: Object.fromEntries(contacts.map((c) => [c.id, { email: c.email, name: c.name, purpose: c.purpose, tips: c.tips, subject: c.subject, body: mailBody(c) }])),
   fallback: contactData.fallbackContact,
   safety: contactData.safetyNotice,
   start: contactData.diagnosis.start,
