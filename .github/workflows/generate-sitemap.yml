@@ -26,6 +26,8 @@ jobs:
 
         find . -maxdepth 2 -type f -name '*.html' ! -name '404.html' | sort | while read -r file; do
           # ./member/tp-li.html -> member/tp-li （拡張子 .html を取り除く）
+          # 移転用リダイレクトページはsitemapに含めない
+          if grep -q 'http-equiv="refresh"' "$file"; then continue; fi
           filename="${file#./}"
           filename="${filename%.html}"
           

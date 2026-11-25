@@ -21,8 +21,16 @@
       "avatarAlt": "tp-liのプロフィール画像",
       "links": [
         {
-          "label": "プロフィールと開発実績",
+          "label": "tp-li.com（プロフィールと開発実績）",
           "url": "https://tp-li.com"
+        },
+        {
+          "label": "GitHub（tp-li-dev）",
+          "url": "https://github.com/tp-li-dev"
+        },
+        {
+          "label": "X（@PythonHaru）",
+          "url": "https://x.com/PythonHaru"
         }
       ],
       "projects": [
