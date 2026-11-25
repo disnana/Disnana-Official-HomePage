@@ -120,3 +120,15 @@
 .about-links { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin-top: 2rem; }
 .support-intro .email-link { justify-self: start; }
 @media (max-width: 64rem) { .about-grid { grid-template-columns: 1fr; } }
+
+/* Quieter home: no glow, no fade-in, flat closing band */
+.first-view::before { display: none; }
+.reveal { opacity: 1; transform: none; transition: none; }
+.hero { grid-template-columns: 1fr; padding-block: clamp(3rem, 8svh, 6rem); }
+.hero-lead { max-width: 40rem; }
+.cta-band { background: var(--surface); color: var(--text); border: 1px solid var(--line); }
+.cta-band::before { display: none; }
+.cta-band p { color: var(--text-2); }
+.button-light { background: var(--brand); color: var(--on-brand); }
+.button-ghost { border-color: var(--line); color: var(--text); }
+.button-ghost:hover { background: var(--surface-soft); }

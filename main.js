@@ -87,25 +87,6 @@
     root.dataset.enhanced = "true";
   }
 
-  // Fade sections in as they enter the viewport (skipped for reduced motion or without IntersectionObserver).
-  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const groups = [".service-links", ".section-intro", ".about-item", ".feature-item", ".section-heading", ".project-row", ".developer-card", ".support-intro", ".faq-list", ".cta-band"];
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    }, { rootMargin: "0px 0px -8% 0px" });
-    groups.forEach((selector) => {
-      document.querySelectorAll(selector).forEach((element, index) => {
-        element.classList.add("reveal");
-        element.style.setProperty("--reveal-delay", Math.min(index, 4) * 0.08 + "s");
-        observer.observe(element);
-      });
-    });
-  }
-
   document.querySelectorAll("[data-current-year]").forEach((element) => {
     element.textContent = String(new Date().getFullYear());
   });
