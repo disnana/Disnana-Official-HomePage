@@ -131,7 +131,7 @@ const footer = `<footer class="site-footer">
           <nav class="footer-nav" aria-label="フッターナビゲーション">
             <div><h2>Disnana</h2><a href="/#about">Disnanaについて</a><a href="/members">メンバー</a><a href="/#projects">プロジェクト</a></div>
             <div><h2>サービス</h2><a href="https://bot.disnana.com/">Bot公式サイト</a><a href="https://dashboard.disnana.com" target="_blank" rel="noopener noreferrer">ダッシュボード</a><a href="https://status.disnana.com" target="_blank" rel="noopener noreferrer">稼働状況</a></div>
-            <div><h2>サポート</h2><a href="/contact">お問い合わせ</a><a href="https://tos.disnana.com" target="_blank" rel="noopener noreferrer">利用規約</a><a href="https://privacypolicy.disnana.com" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a></div>
+            <div><h2>サポート</h2><a href="/contact">お問い合わせ</a><a href="https://legal.disnana.com" target="_blank" rel="noopener noreferrer">利用規約・プライバシーポリシー</a></div>
           </nav>
         </div>
         <div class="footer-bottom"><span>© <span data-current-year>2026</span> Disnana</span><a class="back-top" href="#top">ページの先頭へ <span aria-hidden="true">↑</span></a></div>
